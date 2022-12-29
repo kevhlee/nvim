@@ -1,0 +1,23 @@
+local opt = vim.opt
+
+opt.background = 'dark'
+opt.completeopt = 'menuone,noselect'
+opt.expandtab = true
+opt.hlsearch = false
+opt.ignorecase = true
+opt.incsearch = true
+opt.number = true
+opt.relativenumber = true
+opt.scrolloff = 8
+opt.shiftwidth = 2
+opt.smartcase = true
+opt.smartindent = true
+opt.softtabstop = 2
+opt.splitbelow = true
+opt.splitright = true
+opt.swapfile = false
+opt.tabstop = 2
+opt.termguicolors = true
+opt.updatetime = 100
+opt.undofile = true
+opt.wrap = false
