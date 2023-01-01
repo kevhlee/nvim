@@ -1,6 +1,18 @@
 local colorscheme = 'melange'
 
 local configs = {
+  ayu = function()
+    local ok, ayu = pcall(require, 'ayu')
+    if not ok then
+      return
+    end
+
+    ayu.setup {
+      mirage = false,
+    }
+
+    vim.cmd [[colorscheme ayu]]
+  end,
   material = function()
     local ok, material = pcall(require, 'material')
     if not ok then

@@ -101,6 +101,7 @@ packer.startup(function(use)
   -- ## Colorschemes
   -- ##
 
+  use { 'Shatur/neovim-ayu' }
   use { 'marko-cerovac/material.nvim' }
   use { 'savq/melange' }
   use { 'nyoom-engineering/oxocarbon.nvim' }
