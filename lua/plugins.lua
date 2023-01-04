@@ -98,6 +98,12 @@ packer.startup(function(use)
   }
 
   -- ##
+  -- ## DAP
+  -- ##
+
+  use { 'rcarriga/nvim-dap-ui', requires = 'mfussenegger/nvim-dap' }
+
+  -- ##
   -- ## Colorschemes
   -- ##
 
