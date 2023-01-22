@@ -44,3 +44,6 @@ plugin/packer_compiled.lua
 
 # OS-specific
 .DS_Store
+
+# Personal TODO's
+todos.md

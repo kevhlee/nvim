@@ -1,53 +1,53 @@
 local ok, telescope = pcall(require, 'telescope')
 if not ok then
-  return
+    return
 end
 
 telescope.setup {
-  defaults = {
-    color_devicons = true,
-    winblend = 0,
-    prompt_prefix = '🔭 ',
-    sorting_strategy = 'ascending',
-    selection_strategy = 'reset',
-    layout_strategy = 'horizontal',
-    layout_config = {
-      horizontal = {
-        prompt_position = 'top',
-        preview_width = 0.55,
-        results_width = 0.9,
-      },
-      vertical = {
-        prompt_position = 'top',
-        mirror = true,
-      },
+    defaults = {
+        color_devicons = true,
+        winblend = 0,
+        prompt_prefix = '🔭 ',
+        sorting_strategy = 'ascending',
+        selection_strategy = 'reset',
+        layout_strategy = 'horizontal',
+        layout_config = {
+            horizontal = {
+                prompt_position = 'top',
+                preview_width = 0.55,
+                results_width = 0.9,
+            },
+            vertical = {
+                prompt_position = 'top',
+                mirror = true,
+            },
+        },
+        file_ignore_patterns = {
+            '.DS_Store',
+            '^.git/',
+            '^node_modules/',
+        },
     },
-    file_ignore_patterns = {
-      '.DS_Store',
-      '^.git/',
-      '^node_modules/',
+    pickers = {
+        find_files = {
+            hidden = true,
+        },
+        live_grep = {
+            hidden = true,
+        },
     },
-  },
-  pickers = {
-    find_files = {
-      hidden = true,
+    extensions = {
+        fzf = {
+            fuzzy = true,
+            override_generic_sorter = true,
+            override_file_sorter = true,
+        },
+        file_browser = {
+            hijack_netrw = true,
+            hidden = true,
+            respect_gitignore = false,
+        },
     },
-    live_grep = {
-      hidden = true,
-    },
-  },
-  extensions = {
-    fzf = {
-      fuzzy = true,
-      override_generic_sorter = true,
-      override_file_sorter = true,
-    },
-    file_browser = {
-      hijack_netrw = true,
-      hidden = true,
-      respect_gitignore = false,
-    },
-  },
 }
 
 -- ##
@@ -70,7 +70,7 @@ keymap.set('n', '<leader>fm', '<cmd>Telescope marks<cr>')
 keymap.set('n', '<leader>fk', '<cmd>Telescope keymaps<cr>')
 keymap.set('n', '<leader>fr', '<cmd>Telescope registers<cr>')
 keymap.set('n', '<leader>fo', '<cmd>Telescope oldfiles<cr>')
-keymap.set('n', '<leader>f?', '<cmd>Telescope buffers<cr>')
+keymap.set('n', '<leader>fb', '<cmd>Telescope buffers<cr>')
 keymap.set('n', '<leader>f/', '<cmd>Telescope file_browser<cr>')
 
 keymap.set('n', '<leader>ggc', '<cmd>Telescope git_commits<cr>')
