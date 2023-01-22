@@ -1,9 +1,9 @@
-local ok, nvim_tree = pcall(require, 'nvim-tree')
+local ok, plugin = pcall(require, 'nvim-tree')
 if not ok then
     return
 end
 
-nvim_tree.setup {
+plugin.setup {
     hijack_netrw = false,
     hijack_cursor = true,
     open_on_setup = false,

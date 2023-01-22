@@ -1,9 +1,9 @@
-local ok, lualine = pcall(require, 'lualine')
+local ok, plugin = pcall(require, 'lualine')
 if not ok then
     return
 end
 
-lualine.setup {
+plugin.setup {
     options = {
         theme = 'auto',
         icons_enabled = true,

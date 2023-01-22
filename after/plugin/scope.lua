@@ -1,6 +1,6 @@
-local ok, scope = pcall(require, 'scope')
+local ok, plugin = pcall(require, 'scope')
 if not ok then
     return
 end
 
-scope.setup()
+plugin.setup()

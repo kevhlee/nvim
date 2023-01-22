@@ -1,9 +1,9 @@
-local ok, bufferline = pcall(require, 'bufferline')
+local ok, plugin = pcall(require, 'bufferline')
 if not ok then
     return
 end
 
-bufferline.setup {
+plugin.setup {
     options = {
         mode = 'buffers', -- 'tabs', 'buffers'
         diagnostics = 'nvim_lsp', -- 'nvim_lsp', false
@@ -22,6 +22,9 @@ bufferline.setup {
 }
 
 local keymap = vim.keymap
+
+keymap.set('n', '<leader>bx,', '<cmd>BufferLineCloseLeft<cr>')
+keymap.set('n', '<leader>bx.', '<cmd>BufferLineCloseRight<cr>')
 
 keymap.set('n', '<leader>1', '<cmd>BufferLineGoToBuffer 1<cr>')
 keymap.set('n', '<leader>2', '<cmd>BufferLineGoToBuffer 2<cr>')

@@ -1,9 +1,9 @@
-local ok, true_zen = pcall(require, 'true-zen')
+local ok, plugin = pcall(require, 'true-zen')
 if not ok then
     return
 end
 
-true_zen.setup {
+plugin.setup {
     modes = {
         ataraxis = {
             shade = 'dark',
@@ -17,7 +17,7 @@ true_zen.setup {
         lualine = true,
         kitty = {
             enabled = true,
-            font = '+1',
+            font = '+0',
         },
     },
 }
