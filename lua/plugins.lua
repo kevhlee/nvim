@@ -33,34 +33,18 @@ packer.init {
 
 packer.startup(function(use)
     use { 'wbthomason/packer.nvim' }
+    use { 'lewis6991/impatient.nvim' }
 
     use { 'nvim-telescope/telescope.nvim', requires = 'nvim-lua/plenary.nvim' }
     use { 'nvim-telescope/telescope-fzf-native.nvim', run = 'make' }
     use { 'nvim-telescope/telescope-file-browser.nvim' }
 
-    -- ##
-    -- ## Syntax highlighting
-    -- ##
-
-    use { 'nvim-treesitter/nvim-treesitter' }
-
-    -- ##
-    -- ##
-    -- ##
-
-    use { 'tpope/vim-dadbod' }
-    use { 'tpope/vim-fugitive' }
-
     use { 'numToStr/Comment.nvim' }
+    use { 'tpope/vim-fugitive' }
     use { 'lewis6991/gitsigns.nvim' }
-
-    -- ##
-    -- ## UI
-    -- ##
 
     use { 'nvim-tree/nvim-tree.lua' }
     use { 'nvim-tree/nvim-web-devicons' }
-
     use { 'nvim-lualine/lualine.nvim' }
     use { 'arkav/lualine-lsp-progress' }
     use { 'lukas-reineke/indent-blankline.nvim' }
@@ -70,17 +54,10 @@ packer.startup(function(use)
         requires = 'nvim-tree/nvim-web-devicons',
     }
     use { 'tiagovla/scope.nvim' }
-
-    -- ##
-    -- ## Zen mode
-    -- ##
-
     use { 'folke/twilight.nvim' }
     use { 'Pocco81/true-zen.nvim' }
 
-    -- ##
-    -- ## LSP
-    -- ##
+    use { 'nvim-treesitter/nvim-treesitter' }
 
     use {
         'VonHeikemen/lsp-zero.nvim',
@@ -104,21 +81,10 @@ packer.startup(function(use)
         },
     }
 
-    -- ##
-    -- ## Clojure
-    -- ##
-
     use 'Olical/conjure'
 
-    -- ##
-    -- ## DAP
-    -- ##
-
+    use { 'mfussenegger/nvim-dap' }
     use { 'rcarriga/nvim-dap-ui', requires = 'mfussenegger/nvim-dap' }
-
-    -- ##
-    -- ## Colorschemes
-    -- ##
 
     use { 'Shatur/neovim-ayu' }
     use { 'marko-cerovac/material.nvim' }
