@@ -42,6 +42,9 @@ luac.out
 # Packer
 plugin/packer_compiled.lua
 
+# Custom
+lua/config.lua
+
 # OS-specific
 .DS_Store
 

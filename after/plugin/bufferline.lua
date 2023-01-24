@@ -1,9 +1,14 @@
-local ok, plugin = pcall(require, 'bufferline')
-if not ok then
+local ok_scope, plugin_scope = pcall(require, 'scope')
+if ok_scope then
+    plugin_scope.setup()
+end
+
+local ok_bufferline, plugin_bufferline = pcall(require, 'bufferline')
+if not ok_bufferline then
     return
 end
 
-plugin.setup {
+plugin_bufferline.setup {
     options = {
         mode = 'buffers', -- 'tabs', 'buffers'
         diagnostics = 'nvim_lsp', -- 'nvim_lsp', false
