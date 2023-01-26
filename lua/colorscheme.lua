@@ -19,6 +19,9 @@ M.setup = function(config)
 
             vim.cmd [[colorscheme ayu]]
         end,
+        darcula = function()
+            vim.cmd [[colorscheme darcula]]
+        end,
         material = function()
             local ok, material = pcall(require, 'material')
             if not ok then

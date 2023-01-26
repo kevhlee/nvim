@@ -87,6 +87,7 @@ packer.startup(function(use)
     use { 'rcarriga/nvim-dap-ui', requires = 'mfussenegger/nvim-dap' }
 
     use { 'Shatur/neovim-ayu' }
+    use { 'doums/darcula' }
     use { 'marko-cerovac/material.nvim' }
     use { 'savq/melange' }
     use { 'nyoom-engineering/oxocarbon.nvim' }
