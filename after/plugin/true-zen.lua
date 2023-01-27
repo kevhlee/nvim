@@ -1,9 +1,9 @@
-local ok, plugin = pcall(require, 'true-zen')
+local ok, true_zen = pcall(require, 'true-zen')
 if not ok then
     return
 end
 
-plugin.setup {
+true_zen.setup {
     modes = {
         ataraxis = {
             shade = 'dark',

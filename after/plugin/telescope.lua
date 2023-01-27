@@ -1,9 +1,9 @@
-local ok, plugin = pcall(require, 'telescope')
+local ok, telescope = pcall(require, 'telescope')
 if not ok then
     return
 end
 
-plugin.setup {
+telescope.setup {
     defaults = {
         color_devicons = true,
         winblend = 0,
@@ -54,8 +54,8 @@ plugin.setup {
 -- ## Extensions
 -- ##
 
-plugin.load_extension 'fzf'
-plugin.load_extension 'file_browser'
+telescope.load_extension 'fzf'
+telescope.load_extension 'file_browser'
 
 -- ##
 -- ## Keymaps

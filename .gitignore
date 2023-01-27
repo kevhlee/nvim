@@ -43,7 +43,7 @@ luac.out
 plugin/packer_compiled.lua
 
 # Custom
-lua/config.lua
+lua/khl/config.lua
 
 # OS-specific
 .DS_Store

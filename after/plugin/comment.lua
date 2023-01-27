@@ -1,9 +1,9 @@
-local ok, plugin = pcall(require, 'Comment')
+local ok, comment = pcall(require, 'Comment')
 if not ok then
     return
 end
 
-plugin.setup {
+comment.setup {
     padding = true,
     mappings = {
         basic = true,

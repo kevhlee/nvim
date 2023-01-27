@@ -1,19 +1,18 @@
-local ok_scope, plugin_scope = pcall(require, 'scope')
+local ok_scope, scope = pcall(require, 'scope')
 if ok_scope then
-    plugin_scope.setup()
+    scope.setup()
 end
 
-local ok_bufferline, plugin_bufferline = pcall(require, 'bufferline')
+local ok_bufferline, bufferline = pcall(require, 'bufferline')
 if not ok_bufferline then
     return
 end
 
-plugin_bufferline.setup {
+bufferline.setup {
     options = {
-        mode = 'buffers', -- 'tabs', 'buffers'
+        mode = 'tabs', -- 'tabs', 'buffers'
         diagnostics = 'nvim_lsp', -- 'nvim_lsp', false
         numbers = 'ordinal',
-        tab_size = 9,
         offsets = {
             {
                 filetype = 'NvimTree',
@@ -22,7 +21,11 @@ plugin_bufferline.setup {
                 separator = true,
             },
         },
+        hover = {
+            enabled = false,
+        },
         show_tab_indicators = true,
+        always_show_bufferline = false,
     },
 }
 
@@ -31,12 +34,30 @@ local keymap = vim.keymap
 keymap.set('n', '<leader>bx,', '<cmd>BufferLineCloseLeft<cr>')
 keymap.set('n', '<leader>bx.', '<cmd>BufferLineCloseRight<cr>')
 
-keymap.set('n', '<leader>1', '<cmd>BufferLineGoToBuffer 1<cr>')
-keymap.set('n', '<leader>2', '<cmd>BufferLineGoToBuffer 2<cr>')
-keymap.set('n', '<leader>3', '<cmd>BufferLineGoToBuffer 3<cr>')
-keymap.set('n', '<leader>4', '<cmd>BufferLineGoToBuffer 4<cr>')
-keymap.set('n', '<leader>5', '<cmd>BufferLineGoToBuffer 5<cr>')
-keymap.set('n', '<leader>6', '<cmd>BufferLineGoToBuffer 6<cr>')
-keymap.set('n', '<leader>7', '<cmd>BufferLineGoToBuffer 7<cr>')
-keymap.set('n', '<leader>8', '<cmd>BufferLineGoToBuffer 8<cr>')
-keymap.set('n', '<leader>9', '<cmd>BufferLineGoToBuffer 9<cr>')
+keymap.set('n', '<leader>1', function()
+    bufferline.go_to_buffer(1, true)
+end)
+keymap.set('n', '<leader>2', function()
+    bufferline.go_to_buffer(2, true)
+end)
+keymap.set('n', '<leader>3', function()
+    bufferline.go_to_buffer(3, true)
+end)
+keymap.set('n', '<leader>4', function()
+    bufferline.go_to_buffer(4, true)
+end)
+keymap.set('n', '<leader>5', function()
+    bufferline.go_to_buffer(5, true)
+end)
+keymap.set('n', '<leader>6', function()
+    bufferline.go_to_buffer(6, true)
+end)
+keymap.set('n', '<leader>7', function()
+    bufferline.go_to_buffer(7, true)
+end)
+keymap.set('n', '<leader>8', function()
+    bufferline.go_to_buffer(8, true)
+end)
+keymap.set('n', '<leader>9', function()
+    bufferline.go_to_buffer(9, true)
+end)

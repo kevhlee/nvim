@@ -1,24 +1,24 @@
-local ok, plugin = pcall(require, 'dap')
-if not ok then
+local ok_dap, dap = pcall(require, 'dap')
+if not ok_dap then
     return
 end
 
-vim.keymap.set('n', '<leader>bs', plugin.continue)
-vim.keymap.set('n', '<leader>br', plugin.restart)
-vim.keymap.set('n', '<leader>bl', plugin.step_over)
-vim.keymap.set('n', '<leader>bj', plugin.step_into)
-vim.keymap.set('n', '<leader>bk', plugin.step_out)
-vim.keymap.set('n', '<leader>bt', plugin.terminate)
-vim.keymap.set('n', '<leader>bc', plugin.toggle_breakpoint)
+vim.keymap.set('n', '<leader>bs', dap.continue)
+vim.keymap.set('n', '<leader>br', dap.restart)
+vim.keymap.set('n', '<leader>bl', dap.step_over)
+vim.keymap.set('n', '<leader>bj', dap.step_into)
+vim.keymap.set('n', '<leader>bk', dap.step_out)
+vim.keymap.set('n', '<leader>bt', dap.terminate)
+vim.keymap.set('n', '<leader>bc', dap.toggle_breakpoint)
 vim.keymap.set('n', '<leader>bC', function()
-    plugin.toggle_breakpoint(vim.fn.input 'Breakpoint condition: ')
+    dap.toggle_breakpoint(vim.fn.input 'Breakpoint condition: ')
 end)
 
 -- ##
 -- ## Go
 -- ##
 
-plugin.adapters.delve = {
+dap.adapters.delve = {
     type = 'server',
     port = '${port}',
     executable = {
@@ -27,7 +27,7 @@ plugin.adapters.delve = {
     },
 }
 
-plugin.configurations.go = {
+dap.configurations.go = {
     {
         type = 'delve',
         name = 'Debug',
@@ -50,8 +50,8 @@ plugin.configurations.go = {
     },
 }
 
-local ui_ok, ui = pcall(require, 'dapui')
-if not ui_ok then
+local ok_ui, ui = pcall(require, 'dapui')
+if not ok_ui then
     return
 end
 

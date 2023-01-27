@@ -1,24 +1,24 @@
-local ok, plugin = pcall(require, 'lsp-zero')
+local ok, lsp = pcall(require, 'lsp-zero')
 if not ok then
     return
 end
 
-plugin.preset 'recommended'
+lsp.preset 'recommended'
 
-plugin.set_preferences {
+lsp.set_preferences {
     suggest_lsp_servers = false,
     set_lsp_keymaps = false,
     configure_diagnostics = false,
 }
 
-plugin.ensure_installed {
+lsp.ensure_installed {
     'gopls',
     'sumneko_lua',
     'tsserver',
     'vimls',
 }
 
-plugin.on_attach(function(_, bufnr)
+lsp.on_attach(function(_, bufnr)
     local lsp = vim.lsp
     local diagnostic = vim.diagnostic
     local function set_keymap(mode, lhs, rhs)
@@ -41,7 +41,7 @@ plugin.on_attach(function(_, bufnr)
     set_keymap('n', '<leader>cf', lsp.buf.format)
 end)
 
-plugin.configure('sumneko_lua', {
+lsp.configure('sumneko_lua', {
     settings = {
         Lua = {
             diagnostics = {
@@ -57,6 +57,6 @@ plugin.configure('sumneko_lua', {
     },
 })
 
-plugin.configure 'ocamllsp'
+lsp.configure 'ocamllsp'
 
-plugin.setup()
+lsp.setup()
