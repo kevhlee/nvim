@@ -95,6 +95,7 @@ M.setup = function(_)
 
         use { 'Shatur/neovim-ayu' }
         use { 'doums/darcula' }
+        use { 'ellisonleao/gruvbox.nvim' }
         use { 'marko-cerovac/material.nvim' }
         use { 'savq/melange' }
         use { 'nyoom-engineering/oxocarbon.nvim' }

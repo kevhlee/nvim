@@ -22,6 +22,20 @@ M.setup = function(config)
         darcula = function()
             vim.cmd [[colorscheme darcula]]
         end,
+        gruvbox = function()
+            local ok, gruvbox = pcall(require, 'gruvbox')
+            if not ok then
+                return
+            end
+
+            gruvbox.setup {
+                bold = true,
+                italic = true,
+                transparent_mode = true,
+            }
+
+            vim.cmd [[colorscheme gruvbox]]
+        end,
         material = function()
             local ok, material = pcall(require, 'material')
             if not ok then
