@@ -18,8 +18,9 @@ nvim_tree.setup {
     },
     filters = {
         custom = {
-            '.DS_Store',
-            'node_modules/',
+            '\\.DS_Store',
+            '\\.git',
+            'node_modules/*',
         },
     },
     update_focused_file = {

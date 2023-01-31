@@ -24,8 +24,8 @@ telescope.setup {
         },
         file_ignore_patterns = {
             '.DS_Store',
-            '^.git/',
-            '^node_modules/',
+            '.git/',
+            'node_modules/',
         },
     },
     pickers = {
