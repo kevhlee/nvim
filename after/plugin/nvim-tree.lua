@@ -19,7 +19,7 @@ nvim_tree.setup {
     filters = {
         custom = {
             '\\.DS_Store',
-            '\\.git',
+            '\\.git/',
             'node_modules/*',
         },
     },

@@ -43,7 +43,7 @@ telescope.setup {
             override_file_sorter = true,
         },
         file_browser = {
-            hijack_netrw = true,
+            hijack_netrw = false,
             hidden = true,
             respect_gitignore = false,
         },

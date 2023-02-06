@@ -55,12 +55,6 @@ M.setup = function(_)
         use { 'nvim-lualine/lualine.nvim' }
         use { 'arkav/lualine-lsp-progress' }
         use { 'lukas-reineke/indent-blankline.nvim' }
-        use {
-            'akinsho/bufferline.nvim',
-            tag = 'v3.*',
-            requires = 'nvim-tree/nvim-web-devicons',
-        }
-        use { 'tiagovla/scope.nvim' }
         use { 'folke/twilight.nvim' }
         use { 'Pocco81/true-zen.nvim' }
 
@@ -88,8 +82,6 @@ M.setup = function(_)
             },
         }
 
-        use 'Olical/conjure'
-
         use { 'mfussenegger/nvim-dap' }
         use { 'rcarriga/nvim-dap-ui', requires = 'mfussenegger/nvim-dap' }
 
@@ -99,6 +91,7 @@ M.setup = function(_)
         use { 'marko-cerovac/material.nvim' }
         use { 'savq/melange' }
         use { 'nyoom-engineering/oxocarbon.nvim' }
+        use { 'elvessousa/sobrio' }
         use { 'srcery-colors/srcery-vim', as = 'srcery' }
 
         if bootstrap then

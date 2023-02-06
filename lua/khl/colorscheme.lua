@@ -66,6 +66,9 @@ M.setup = function(config)
         oxocarbon = function()
             vim.cmd [[colorscheme oxocarbon]]
         end,
+        sobrio = function()
+            vim.cmd [[colorscheme sobrio]]
+        end,
         srcery = function()
             vim.cmd [[colorscheme srcery]]
         end,

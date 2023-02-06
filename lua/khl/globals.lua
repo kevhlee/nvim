@@ -25,9 +25,6 @@ g.maplocalleader = ' '
 g.loaded_netrw = 1
 g.loaded_netrwPlugin = 1
 
-g['conjure#mapping#prefix'] = ','
-g['conjure#mapping#log_split'] = 'lx'
-
 -- ##
 -- ## Colorscheme
 -- ##
