@@ -14,6 +14,7 @@ end
 opt.background = 'dark'
 opt.completeopt = 'menuone,noselect'
 opt.expandtab = true
+opt.fixeol = false
 opt.hlsearch = false
 opt.ignorecase = true
 opt.incsearch = true
