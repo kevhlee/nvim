@@ -78,8 +78,13 @@ M.setup = function(_)
 
                 -- Snippets
                 { 'L3MON4D3/LuaSnip' },
-                -- { 'rafamadriz/friendly-snippets' },
+                { 'rafamadriz/friendly-snippets' },
             },
+        }
+
+        use {
+            'scalameta/nvim-metals',
+            requires = { 'nvim-lua/plenary.nvim' },
         }
 
         use { 'mfussenegger/nvim-dap' }

@@ -50,6 +50,30 @@ dap.configurations.go = {
     },
 }
 
+-- ##
+-- ## Scala
+-- ##
+
+dap.configurations.scala = {
+    {
+        type = 'scala',
+        request = 'launch',
+        name = 'Run Or Test Target',
+        metals = {
+            runType = 'runOrTestFile',
+            args = {},
+        },
+    },
+    {
+        type = 'scala',
+        request = 'launch',
+        name = 'Test Target',
+        metals = {
+            runType = 'testTarget',
+        },
+    },
+}
+
 local ok_ui, ui = pcall(require, 'dapui')
 if not ok_ui then
     return
