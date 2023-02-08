@@ -66,6 +66,22 @@ M.setup = function(config)
         oxocarbon = function()
             vim.cmd [[colorscheme oxocarbon]]
         end,
+        rose_pine = function()
+            local ok, rose_pine = pcall(require, 'rose-pine')
+            if not ok then
+                return
+            end
+
+            rose_pine.setup {
+                dark_variant = 'moon', -- main, moon
+                dim_nc_background = false,
+                disable_background = false,
+                disable_float_background = false,
+                disable_italics = false,
+            }
+
+            vim.cmd [[colorscheme rose-pine]]
+        end,
         sobrio = function()
             vim.cmd [[colorscheme sobrio]]
         end,
