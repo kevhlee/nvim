@@ -73,11 +73,11 @@ M.setup = function(config)
             end
 
             rose_pine.setup {
-                dark_variant = 'moon', -- main, moon
+                dark_variant = 'main', -- main, moon
                 dim_nc_background = false,
                 disable_background = false,
                 disable_float_background = false,
-                disable_italics = false,
+                disable_italics = true,
             }
 
             vim.cmd [[colorscheme rose-pine]]
