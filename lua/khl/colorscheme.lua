@@ -7,6 +7,9 @@ M.setup = function(config)
     end
 
     local colorscheme_configs = {
+        adwaita = function ()
+            vim.cmd [[colorscheme adwaita]]
+        end,
         ayu = function()
             local ok, ayu = pcall(require, 'ayu')
             if not ok then

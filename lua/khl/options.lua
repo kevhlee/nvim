@@ -1,15 +1,4 @@
-local M = {}
 local opt = vim.opt
-
-M.setup = function(config)
-    if config.options == nil then
-        return
-    end
-
-    for key, value in pairs(config.options) do
-        opt[key] = value
-    end
-end
 
 opt.background = 'dark'
 opt.completeopt = 'menuone,noselect'
@@ -32,5 +21,21 @@ opt.termguicolors = true
 opt.updatetime = 100
 opt.undofile = true
 opt.wrap = false
+
+-- ##
+-- ## Custom
+-- ##
+
+local M = {}
+
+M.setup = function(config)
+    if config.options == nil then
+        return
+    end
+
+    for key, value in pairs(config.options) do
+        opt[key] = value
+    end
+end
 
 return M

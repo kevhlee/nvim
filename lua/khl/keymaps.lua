@@ -1,5 +1,26 @@
-local M = {}
 local keymap = vim.keymap
+
+-- ##
+-- ## Buffers
+-- ##
+
+keymap.set('n', '<leader>b,', '<cmd>:bprev<cr>')
+keymap.set('n', '<leader>b.', '<cmd>:bnext<cr>')
+keymap.set('n', '<leader>bxx', '<cmd>:bdelete<cr>')
+
+-- ##
+-- ## Tabs
+-- ##
+
+keymap.set('n', '<leader>t,', '<cmd>:tabprev<cr>')
+keymap.set('n', '<leader>t.', '<cmd>:tabnext<cr>')
+keymap.set('n', '<leader>txx', '<cmd>:tabclose<cr>')
+
+-- ##
+-- ## Custom
+-- ##
+
+local M = {}
 
 M.setup = function(config)
     if config.keymaps == nil then
@@ -17,21 +38,5 @@ M.setup = function(config)
         keymap.set(value[1], value[2], value[3], opts)
     end
 end
-
--- ##
--- ## Buffers
--- ##
-
-keymap.set('n', '<leader>b,', '<cmd>:bprev<cr>')
-keymap.set('n', '<leader>b.', '<cmd>:bnext<cr>')
-keymap.set('n', '<leader>bxx', '<cmd>:bdelete<cr>')
-
--- ##
--- ## Tabs
--- ##
-
-keymap.set('n', '<leader>t,', '<cmd>:tabprev<cr>')
-keymap.set('n', '<leader>t.', '<cmd>:tabnext<cr>')
-keymap.set('n', '<leader>txx', '<cmd>:tabclose<cr>')
 
 return M
