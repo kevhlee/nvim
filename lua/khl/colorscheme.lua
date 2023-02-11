@@ -7,7 +7,7 @@ M.setup = function(config)
     end
 
     local colorscheme_configs = {
-        adwaita = function ()
+        adwaita = function()
             vim.cmd [[colorscheme adwaita]]
         end,
         ayu = function()
