@@ -76,7 +76,7 @@ M.setup = function(config)
             end
 
             rose_pine.setup {
-                dark_variant = 'main', -- main, moon
+                dark_variant = 'moon', -- main, moon
                 dim_nc_background = false,
                 disable_background = false,
                 disable_float_background = false,
