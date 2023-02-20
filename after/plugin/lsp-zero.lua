@@ -13,7 +13,7 @@ lsp_zero.set_preferences {
 
 lsp_zero.ensure_installed {
     'gopls',
-    'sumneko_lua',
+    'lua_ls',
     'tsserver',
     'vimls',
     'yamlls',
@@ -21,7 +21,7 @@ lsp_zero.ensure_installed {
 
 lsp_zero.on_attach(require('khl.core.lsp').on_attach)
 
-lsp_zero.configure('sumneko_lua', {
+lsp_zero.configure('lua_ls', {
     settings = {
         Lua = {
             diagnostics = {
