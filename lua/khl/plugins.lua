@@ -96,7 +96,9 @@ packer.startup(function(use)
     use { 'Mofiqul/adwaita.nvim' }
     use { 'Shatur/neovim-ayu' }
     use { 'doums/darcula' }
+    use { 'dracula/vim', as = 'dracula' }
     use { 'ellisonleao/gruvbox.nvim' }
+    use { 'rebelot/kanagawa.nvim' }
     use { 'marko-cerovac/material.nvim' }
     use { 'savq/melange' }
     use { 'rose-pine/neovim', as = 'rose-pine' }

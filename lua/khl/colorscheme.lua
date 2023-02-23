@@ -25,6 +25,9 @@ M.setup = function(config)
         darcula = function()
             vim.cmd [[colorscheme darcula]]
         end,
+        dracula = function()
+            vim.cmd [[colorscheme dracula]]
+        end,
         gruvbox = function()
             local ok, gruvbox = pcall(require, 'gruvbox')
             if not ok then
@@ -38,6 +41,26 @@ M.setup = function(config)
             }
 
             vim.cmd [[colorscheme gruvbox]]
+        end,
+        kanagawa = function()
+            local ok, kanagawa = pcall(require, 'kanagawa')
+            if not ok then
+                return
+            end
+
+            kanagawa.setup {
+                theme = "default",
+                commentStyle = { italic = true },
+                keywordStyle = { bold = true, italic = true },
+                specialReturn = true,
+                specialException = true,
+                transparent = true,
+                dimInactive = false, -- dim inactive window `:h hl-NormalNC`
+                globalStatus = false, -- adjust window separators highlight for laststatus=3
+                terminalColors = true,
+            }
+
+            vim.cmd [[colorscheme kanagawa]]
         end,
         material = function()
             local ok, material = pcall(require, 'material')
