@@ -7,9 +7,6 @@ M.setup = function(config)
     end
 
     local colorscheme_configs = {
-        adwaita = function()
-            vim.cmd [[colorscheme adwaita]]
-        end,
         ayu = function()
             local ok, ayu = pcall(require, 'ayu')
             if not ok then
@@ -41,26 +38,6 @@ M.setup = function(config)
             }
 
             vim.cmd [[colorscheme gruvbox]]
-        end,
-        kanagawa = function()
-            local ok, kanagawa = pcall(require, 'kanagawa')
-            if not ok then
-                return
-            end
-
-            kanagawa.setup {
-                theme = "default",
-                commentStyle = { italic = true },
-                keywordStyle = { bold = true, italic = true },
-                specialReturn = true,
-                specialException = true,
-                transparent = true,
-                dimInactive = false, -- dim inactive window `:h hl-NormalNC`
-                globalStatus = false, -- adjust window separators highlight for laststatus=3
-                terminalColors = true,
-            }
-
-            vim.cmd [[colorscheme kanagawa]]
         end,
         material = function()
             local ok, material = pcall(require, 'material')
@@ -107,9 +84,6 @@ M.setup = function(config)
             }
 
             vim.cmd [[colorscheme rose-pine]]
-        end,
-        sobrio = function()
-            vim.cmd [[colorscheme sobrio]]
         end,
         srcery = function()
             vim.cmd [[colorscheme srcery]]
