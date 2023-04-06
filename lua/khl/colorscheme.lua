@@ -1,10 +1,7 @@
 local M = {}
 
 M.setup = function(config)
-    local colorscheme = config.colorscheme
-    if colorscheme == nil then
-        colorscheme = 'material'
-    end
+    local colorscheme = config.colorscheme or 'rose_pine'
 
     local colorscheme_configs = {
         ayu = function()
@@ -21,9 +18,6 @@ M.setup = function(config)
         end,
         darcula = function()
             vim.cmd [[colorscheme darcula]]
-        end,
-        dracula = function()
-            vim.cmd [[colorscheme dracula]]
         end,
         gruvbox = function()
             local ok, gruvbox = pcall(require, 'gruvbox')

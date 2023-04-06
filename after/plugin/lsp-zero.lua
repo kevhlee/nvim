@@ -14,7 +14,7 @@ lsp_zero.set_preferences {
 lsp_zero.ensure_installed {
     'gopls',
     'lua_ls',
-    'ocaml',
+    'ocamllsp',
     'tsserver',
     'vimls',
     'yamlls',

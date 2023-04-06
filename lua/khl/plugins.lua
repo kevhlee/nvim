@@ -95,13 +95,11 @@ packer.startup(function(use)
 
     use { 'Shatur/neovim-ayu' }
     use { 'doums/darcula' }
-    use { 'dracula/vim', as = 'dracula' }
     use { 'ellisonleao/gruvbox.nvim' }
     use { 'marko-cerovac/material.nvim' }
     use { 'savq/melange' }
     use { 'rose-pine/neovim', as = 'rose-pine' }
     use { 'nyoom-engineering/oxocarbon.nvim' }
-    use { 'elvessousa/sobrio' }
     use { 'srcery-colors/srcery-vim', as = 'srcery' }
 
     if bootstrap then
