@@ -24,6 +24,9 @@ g.adwaita_transparent = true
 
 g.material_style = 'darker'
 
+g.mellow_italic_functions = true
+g.mellow_bold_functions = true
+
 g.srcery_bold = 1
 g.srcery_italic = 1
 g.srcery_red = '#EF3F37'

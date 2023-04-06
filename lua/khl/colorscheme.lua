@@ -60,6 +60,9 @@ M.setup = function(config)
         melange = function()
             vim.cmd [[colorscheme melange]]
         end,
+        mellow = function()
+            vim.cmd [[colorscheme mellow]]
+        end,
         oxocarbon = function()
             vim.cmd [[colorscheme oxocarbon]]
         end,
