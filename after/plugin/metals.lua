@@ -5,7 +5,7 @@ end
 
 vim.api.nvim_create_autocmd('FileType', {
     group = vim.api.nvim_create_augroup('nvim-metals', { clear = true }),
-    pattern = { 'scala', 'sbt' },
+    pattern = { 'java', 'scala', 'sbt' },
     callback = function()
         local config = metals.bare_config()
 

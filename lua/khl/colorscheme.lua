@@ -4,18 +4,6 @@ M.setup = function(config)
     local colorscheme = config.colorscheme or 'rose_pine'
 
     local colorscheme_configs = {
-        ayu = function()
-            local ok, ayu = pcall(require, 'ayu')
-            if not ok then
-                return
-            end
-
-            ayu.setup {
-                mirage = false,
-            }
-
-            vim.cmd [[colorscheme ayu]]
-        end,
         darcula = function()
             vim.cmd [[colorscheme darcula]]
         end,
@@ -27,7 +15,9 @@ M.setup = function(config)
 
             gruvbox.setup {
                 bold = true,
-                italic = true,
+                italic = {
+                    comments = true,
+                },
                 transparent_mode = true,
             }
 
@@ -59,9 +49,6 @@ M.setup = function(config)
         end,
         melange = function()
             vim.cmd [[colorscheme melange]]
-        end,
-        mellow = function()
-            vim.cmd [[colorscheme mellow]]
         end,
         oxocarbon = function()
             vim.cmd [[colorscheme oxocarbon]]

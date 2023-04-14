@@ -93,12 +93,10 @@ packer.startup(function(use)
     use { 'mfussenegger/nvim-dap' }
     use { 'rcarriga/nvim-dap-ui', requires = 'mfussenegger/nvim-dap' }
 
-    use { 'Shatur/neovim-ayu' }
     use { 'doums/darcula' }
     use { 'ellisonleao/gruvbox.nvim' }
     use { 'marko-cerovac/material.nvim' }
     use { 'savq/melange' }
-    use { 'kvrohit/mellow.nvim' }
     use { 'rose-pine/neovim', as = 'rose-pine' }
     use { 'nyoom-engineering/oxocarbon.nvim' }
     use { 'srcery-colors/srcery-vim', as = 'srcery' }
