@@ -3,26 +3,25 @@ if not ok then
     return
 end
 
-lsp_zero.preset 'recommended'
+local lsp = lsp_zero.preset 'recommended'
 
-lsp_zero.set_preferences {
+lsp.set_preferences {
     suggest_lsp_servers = false,
     set_lsp_keymaps = false,
     configure_diagnostics = false,
 }
 
-lsp_zero.ensure_installed {
+lsp.ensure_installed {
     'gopls',
     'lua_ls',
-    'ocamllsp',
     'tsserver',
     'vimls',
     'yamlls',
 }
 
-lsp_zero.on_attach(require('khl.core.lsp').on_attach)
+lsp.on_attach(require('khl.core.lsp').on_attach)
 
-lsp_zero.configure('lua_ls', {
+lsp.configure('lua_ls', {
     settings = {
         Lua = {
             diagnostics = {
@@ -38,4 +37,11 @@ lsp_zero.configure('lua_ls', {
     },
 })
 
-lsp_zero.setup()
+local lspconfig = require 'lspconfig'
+local server_names = { 'ocamllsp' }
+
+for _, server_name in ipairs(server_names) do
+    lspconfig[server_name].setup {}
+end
+
+lsp.setup()

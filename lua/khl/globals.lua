@@ -19,13 +19,7 @@ g.loaded_netrwPlugin = 1
 -- ## Colorscheme
 -- ##
 
-g.adwaita_darker = false
-g.adwaita_transparent = true
-
 g.material_style = 'darker'
-
-g.mellow_italic_functions = true
-g.mellow_bold_functions = true
 
 g.srcery_bold = 1
 g.srcery_italic = 1
