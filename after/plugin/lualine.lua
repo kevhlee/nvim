@@ -1,9 +1,8 @@
-local ok, lualine = pcall(require, 'lualine')
-if not ok then
+if not pcall(require, 'lualine') then
     return
 end
 
-lualine.setup {
+require('lualine').setup {
     options = {
         theme = 'auto',
         icons_enabled = true,
@@ -42,7 +41,10 @@ lualine.setup {
                     title = { pre = '', post = ': ' },
                     lsp_client_name = { pre = '[', post = ']' },
                     spinner = { pre = '', post = '' },
-                    message = { commenced = 'In Progress', completed = 'Completed' },
+                    message = {
+                        commenced = 'In Progress',
+                        completed = 'Completed',
+                    },
                 },
                 display_components = {
                     'lsp_client_name',

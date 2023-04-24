@@ -15,4 +15,6 @@
 -- ##
 -- ####################################################################
 
-require 'khl'
+require 'globals'
+require 'options'
+require 'plugins'
