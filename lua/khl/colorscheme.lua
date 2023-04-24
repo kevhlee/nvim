@@ -1,7 +1,7 @@
 local configs = {}
 
-configs.darcula = function()
-    vim.cmd [[colorscheme darcula]]
+configs.darcula_solid = function()
+    vim.cmd [[colorscheme darcula-solid]]
 end
 
 configs.gruvbox = function()
@@ -46,10 +46,6 @@ configs.material = function()
     vim.cmd [[colorscheme material]]
 end
 
-configs.melange = function()
-    vim.cmd [[colorscheme melange]]
-end
-
 configs.oxocarbon = function()
     vim.cmd [[colorscheme oxocarbon]]
 end
@@ -79,7 +75,7 @@ end
 vim.api.nvim_set_hl(0, 'Normal', { bg = 'none' })
 vim.api.nvim_set_hl(0, 'NormalFloat', { bg = 'none' })
 
-local config = configs.rose_pine
+local config = configs.darcula_solid
 if config ~= nil then
     config()
 end

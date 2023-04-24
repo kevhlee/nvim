@@ -145,6 +145,7 @@ packer.startup(function(use)
                     'c',
                     'lua',
                     'markdown',
+                    'rust',
                     'vim',
                 },
                 highlight = {
@@ -176,39 +177,10 @@ packer.startup(function(use)
         },
     }
 
-    use {
-        'scalameta/nvim-metals',
-        requires = 'nvim-lua/plenary.nvim',
-        config = function()
-            vim.api.nvim_create_autocmd('FileType', {
-                group = vim.api.nvim_create_augroup('nvim-metals', { clear = true }),
-                pattern = { 'java', 'scala', 'sbt' },
-                callback = function()
-                    local config = require('metals').bare_config()
-
-                    config.init_options.statusBarProvider = 'on'
-                    config.settings = { showImplicitArguments = true }
-                    config.capabilities = require('cmp_nvim_lsp').default_capabilities()
-
-                    config.on_attach = function(client, bufnr)
-                        require('metals').setup_dap()
-                        require('khl.core.lsp').on_attach(client, bufnr)
-                        require('khl.core.lsp').set_keymap(
-                            bufnr,
-                            'n',
-                            '<leader>ss',
-                            '<cmd>Telescope metals commands<cr>'
-                        )
-                    end
-
-                    require('metals').initialize_or_attach(config)
-                end,
-            })
-        end,
-    }
-
+    use { 'scalameta/nvim-metals', requires = 'nvim-lua/plenary.nvim' }
     use { 'mfussenegger/nvim-dap', requires = 'rcarriga/nvim-dap-ui' }
 
+    use { 'briones-gabriel/darcula-solid.nvim', requires = 'rktjmp/lush.nvim' }
     use { 'ellisonleao/gruvbox.nvim' }
     use { 'savq/melange' }
     use { 'rose-pine/neovim', as = 'rose-pine' }
