@@ -1,41 +1,20 @@
-local opt = vim.opt
-
-opt.background = 'dark'
-opt.completeopt = 'menuone,noselect'
-opt.expandtab = true
-opt.fixeol = false
-opt.hlsearch = false
-opt.ignorecase = true
-opt.incsearch = true
-opt.number = true
-opt.relativenumber = true
-opt.scrolloff = 8
-opt.shiftwidth = 4
-opt.smartcase = true
-opt.smartindent = true
-opt.splitbelow = true
-opt.splitright = true
-opt.swapfile = false
-opt.tabstop = 4
-opt.termguicolors = true
-opt.updatetime = 100
-opt.undofile = true
-opt.wrap = false
-
--- ##
--- ## Custom
--- ##
-
-local M = {}
-
-M.setup = function(config)
-    if config.options == nil then
-        return
-    end
-
-    for key, value in pairs(config.options) do
-        opt[key] = value
-    end
-end
-
-return M
+vim.opt.background = 'dark'
+vim.opt.completeopt = 'menuone,noselect'
+vim.opt.expandtab = true
+vim.opt.fixeol = false
+vim.opt.hlsearch = false
+vim.opt.ignorecase = true
+vim.opt.incsearch = true
+vim.opt.number = true
+vim.opt.relativenumber = true
+vim.opt.scrolloff = 8
+vim.opt.shiftwidth = 4
+vim.opt.smartcase = true
+vim.opt.smartindent = true
+vim.opt.splitbelow = true
+vim.opt.splitright = true
+vim.opt.swapfile = false
+vim.opt.tabstop = 4
+vim.opt.termguicolors = true
+vim.opt.undofile = true
+vim.opt.wrap = false

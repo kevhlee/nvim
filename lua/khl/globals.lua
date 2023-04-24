@@ -1,42 +1,11 @@
-local M = {}
-local g = vim.g
+vim.g.mapleader = ' '
+vim.g.maplocalleader = ' '
 
--- ##
--- ## General
--- ##
+vim.g.loaded_netrw = 1
+vim.g.loaded_netrwPlugin = 1
 
-g.mapleader = ' '
-g.maplocalleader = ' '
+vim.g.material_style = 'darker'
 
--- ##
--- ## Plugin
--- ##
-
-g.loaded_netrw = 1
-g.loaded_netrwPlugin = 1
-
--- ##
--- ## Colorscheme
--- ##
-
-g.material_style = 'darker'
-
-g.srcery_bold = 1
-g.srcery_italic = 1
-g.srcery_red = '#EF3F37'
-
--- ##
--- ## Custom
--- ##
-
-M.setup = function(config)
-    if config.globals == nil then
-        return
-    end
-
-    for key, value in pairs(config.globals) do
-        g[key] = value
-    end
-end
-
-return M
+vim.g.srcery_bold = 1
+vim.g.srcery_italic = 1
+vim.g.srcery_red = '#EF3F37'
