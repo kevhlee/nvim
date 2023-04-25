@@ -75,7 +75,7 @@ end
 vim.api.nvim_set_hl(0, 'Normal', { bg = 'none' })
 vim.api.nvim_set_hl(0, 'NormalFloat', { bg = 'none' })
 
-local config = configs.darcula_solid
+local config = configs.rose_pine
 if config ~= nil then
     config()
 end

@@ -38,122 +38,14 @@ packer.startup(function(use)
     use { 'nvim-telescope/telescope-fzf-native.nvim', run = 'make' }
     use { 'nvim-telescope/telescope-file-browser.nvim' }
 
-    use {
-        'numToStr/Comment.nvim',
-        config = function()
-            require('Comment').setup {
-                padding = true,
-                mappings = {
-                    basic = true,
-                },
-            }
-
-            local ft = require 'Comment.ft'
-
-            ft.set('json', { '//%s', '/*%s*/' })
-        end,
-    }
+    use { 'numToStr/Comment.nvim' }
     use { 'tpope/vim-fugitive' }
     use { 'lewis6991/gitsigns.nvim' }
-
-    use {
-        'nvim-tree/nvim-tree.lua',
-        requires = 'nvim-tree/nvim-web-devicons',
-        config = function()
-            require('nvim-tree').setup {
-                hijack_netrw = false,
-                hijack_cursor = true,
-                open_on_setup = false,
-                view = {
-                    side = 'left',
-                    adaptive_size = true,
-                },
-                filters = {
-                    custom = {
-                        '\\.DS_Store',
-                        '\\.git/',
-                        'node_modules/*',
-                    },
-                },
-                update_focused_file = {
-                    enable = true,
-                    update_cwd = false,
-                },
-                git = {
-                    enable = true,
-                    ignore = false,
-                },
-                filesystem_watchers = { enable = true },
-                renderer = {
-                    indent_markers = { enable = true },
-                    highlight_git = true,
-                },
-            }
-
-            vim.keymap.set('n', '<C-n>', '<cmd>NvimTreeToggle<cr>')
-            vim.keymap.set('n', '<leader>n', '<cmd>NvimTreeFocus<cr>')
-        end,
-    }
-
+    use { 'nvim-tree/nvim-tree.lua', requires = 'nvim-tree/nvim-web-devicons' }
     use { 'nvim-lualine/lualine.nvim', requires = 'arkav/lualine-lsp-progress' }
-
-    use {
-        'lukas-reineke/indent-blankline.nvim',
-        config = function()
-            require('indent_blankline').setup {
-                show_current_context = true,
-                show_current_context_start = true,
-                char = '▏',
-                context_char = '▏',
-            }
-        end,
-    }
-
-    use {
-        'Pocco81/true-zen.nvim',
-        requires = 'folke/twilight.nvim',
-        config = function()
-            require('true-zen').setup {
-                modes = {
-                    ataraxis = {
-                        shade = 'dark',
-                        backdrop = 0,
-                        quit_untoggles = true,
-                    },
-                },
-                integrations = {
-                    tmux = true,
-                    twilight = true,
-                    lualine = true,
-                    kitty = {
-                        enabled = true,
-                        font = '+0',
-                    },
-                },
-            }
-
-            vim.keymap.set('n', '<leader>tz', '<cmd>TZAtaraxis<cr>')
-        end,
-    }
-
-    use {
-        'nvim-treesitter/nvim-treesitter',
-        config = function()
-            require('nvim-treesitter.configs').setup {
-                auto_install = true,
-                ensure_installed = {
-                    'c',
-                    'lua',
-                    'markdown',
-                    'rust',
-                    'vim',
-                },
-                highlight = {
-                    enable = true,
-                },
-            }
-        end,
-    }
+    use { 'lukas-reineke/indent-blankline.nvim' }
+    use { 'Pocco81/true-zen.nvim', requires = 'folke/twilight.nvim' }
+    use { 'nvim-treesitter/nvim-treesitter' }
 
     use {
         'VonHeikemen/lsp-zero.nvim',
