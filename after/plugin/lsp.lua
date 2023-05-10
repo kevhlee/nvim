@@ -83,7 +83,7 @@ if pcall(require, 'lsp-zero') then
     })
 
     local lspconfig = require 'lspconfig'
-    local server_names = { 'ocamllsp' }
+    local server_names = { 'ocamllsp', 'pyright', 'ruby_ls' }
 
     for _, server_name in ipairs(server_names) do
         lspconfig[server_name].setup {}

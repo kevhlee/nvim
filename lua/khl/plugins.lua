@@ -42,7 +42,13 @@ packer.startup(function(use)
     use { 'tpope/vim-fugitive' }
     use { 'lewis6991/gitsigns.nvim' }
     use { 'nvim-tree/nvim-tree.lua', requires = 'nvim-tree/nvim-web-devicons' }
-    use { 'nvim-lualine/lualine.nvim', requires = 'arkav/lualine-lsp-progress' }
+    use {
+        'nvim-lualine/lualine.nvim',
+        requires = {
+            'nvim-tree/nvim-web-devicons',
+            'arkav/lualine-lsp-progress',
+        },
+    }
     use { 'lukas-reineke/indent-blankline.nvim' }
     use { 'Pocco81/true-zen.nvim', requires = 'folke/twilight.nvim' }
     use { 'nvim-treesitter/nvim-treesitter' }
@@ -75,6 +81,7 @@ packer.startup(function(use)
     use { 'briones-gabriel/darcula-solid.nvim', requires = 'rktjmp/lush.nvim' }
     use { 'ellisonleao/gruvbox.nvim' }
     use { 'savq/melange' }
+    use { 'marko-cerovac/material.nvim' }
     use { 'rose-pine/neovim', as = 'rose-pine' }
     use { 'nyoom-engineering/oxocarbon.nvim' }
     use { 'srcery-colors/srcery-vim', as = 'srcery' }
