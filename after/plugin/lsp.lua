@@ -83,7 +83,7 @@ if pcall(require, 'lsp-zero') then
     })
 
     local lspconfig = require 'lspconfig'
-    local server_names = { 'ocamllsp', 'pyright', 'ruby_ls' }
+    local server_names = { 'clangd', 'ocamllsp', 'pyright', 'ruby_ls' }
 
     for _, server_name in ipairs(server_names) do
         lspconfig[server_name].setup {}
@@ -95,7 +95,7 @@ end
 if pcall(require, 'metals') then
     vim.api.nvim_create_autocmd('FileType', {
         group = vim.api.nvim_create_augroup('nvim-metals', { clear = true }),
-        pattern = { 'java', 'scala', 'sbt' },
+        pattern = { 'scala', 'sbt' },
         callback = function()
             local config = require('metals').bare_config()
 

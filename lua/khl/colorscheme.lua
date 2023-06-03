@@ -1,9 +1,5 @@
 local configs = {}
 
-configs.darcula_solid = function()
-    vim.cmd [[colorscheme darcula-solid]]
-end
-
 configs.gruvbox = function()
     local ok, gruvbox = pcall(require, 'gruvbox')
     if not ok then
@@ -75,7 +71,7 @@ end
 vim.api.nvim_set_hl(0, 'Normal', { bg = 'none' })
 vim.api.nvim_set_hl(0, 'NormalFloat', { bg = 'none' })
 
-local config = configs.material
+local config = configs.rose_pine
 if config ~= nil then
     config()
 end

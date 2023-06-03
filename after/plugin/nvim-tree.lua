@@ -14,6 +14,9 @@ require('nvim-tree').setup {
             'node_modules/*',
         },
     },
+    diagnostics = {
+        enable = false,
+    },
     update_focused_file = {
         enable = true,
         update_cwd = false,
@@ -22,9 +25,13 @@ require('nvim-tree').setup {
         enable = true,
         ignore = false,
     },
-    filesystem_watchers = { enable = true },
+    filesystem_watchers = {
+        enable = true,
+    },
     renderer = {
-        indent_markers = { enable = true },
+        indent_markers = {
+            enable = true,
+        },
         highlight_git = true,
     },
 }
