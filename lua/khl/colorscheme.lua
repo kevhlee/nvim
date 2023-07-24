@@ -63,15 +63,11 @@ configs.rose_pine = function()
     vim.cmd [[colorscheme rose-pine]]
 end
 
-configs.srcery = function()
-    vim.cmd [[colorscheme srcery]]
-end
-
 -- Make background transparent
 vim.api.nvim_set_hl(0, 'Normal', { bg = 'none' })
 vim.api.nvim_set_hl(0, 'NormalFloat', { bg = 'none' })
 
-local config = configs.rose_pine
+local config = configs['gruvbox']
 if config ~= nil then
     config()
 end

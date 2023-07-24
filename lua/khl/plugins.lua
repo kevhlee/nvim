@@ -50,7 +50,6 @@ packer.startup(function(use)
         },
     }
     use { 'lukas-reineke/indent-blankline.nvim' }
-    use { 'kevinhwang91/nvim-ufo', requires = 'kevinhwang91/promise-async' }
     use { 'Pocco81/true-zen.nvim', requires = 'folke/twilight.nvim' }
     use { 'nvim-treesitter/nvim-treesitter' }
 
@@ -76,14 +75,12 @@ packer.startup(function(use)
         },
     }
 
-    use { 'scalameta/nvim-metals', requires = 'nvim-lua/plenary.nvim' }
     use { 'mfussenegger/nvim-dap', requires = 'rcarriga/nvim-dap-ui' }
 
     use { 'ellisonleao/gruvbox.nvim' }
     use { 'marko-cerovac/material.nvim' }
     use { 'rose-pine/neovim', as = 'rose-pine' }
     use { 'nyoom-engineering/oxocarbon.nvim' }
-    use { 'srcery-colors/srcery-vim', as = 'srcery' }
 
     if bootstrap then
         packer.sync()
