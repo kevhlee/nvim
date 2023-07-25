@@ -39,11 +39,8 @@ luac.out
 *.x86_64
 *.hex
 
-# Packer
-plugin/packer_compiled.lua
-
 # Custom
-lua/khl/config.lua
+lua/custom/
 
 # OS-specific
 .DS_Store

@@ -1,26 +1,21 @@
 vim.opt.background = 'dark'
 vim.opt.completeopt = 'menuone,noselect'
-vim.opt.expandtab = true
 vim.opt.fixeol = false
-vim.opt.foldcolumn = '1'
-vim.opt.foldlevel = 99
-vim.opt.foldlevelstart = 99
-vim.opt.foldenable = true
--- vim.opt.foldmethod = 'expr'
--- vim.opt.foldexpr = 'nvim_treesitter#foldexpr()'
 vim.opt.hlsearch = false
-vim.opt.ignorecase = true
 vim.opt.incsearch = true
 vim.opt.number = true
 vim.opt.relativenumber = true
 vim.opt.scrolloff = 8
-vim.opt.shiftwidth = 4
-vim.opt.smartcase = true
-vim.opt.smartindent = true
 vim.opt.splitbelow = true
 vim.opt.splitright = true
 vim.opt.swapfile = false
-vim.opt.tabstop = 4
 vim.opt.termguicolors = true
 vim.opt.undofile = true
 vim.opt.wrap = false
+
+local ok, custom = pcall(require, 'custom.options')
+if ok then
+    for key, value in pairs(custom) do
+        vim.opt[key] = value
+    end
+end

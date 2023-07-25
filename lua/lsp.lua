@@ -48,68 +48,45 @@ local on_attach = function(client, bufnr)
     end
 end
 
-if pcall(require, 'lsp-zero') then
-    local lsp = require('lsp-zero').preset 'recommended'
+local lsp = require('lsp-zero').preset 'recommended'
 
-    lsp.set_preferences {
-        suggest_lsp_servers = false,
-        set_lsp_keymaps = false,
-        configure_diagnostics = false,
-    }
+lsp.set_preferences {
+    suggest_lsp_servers = false,
+    set_lsp_keymaps = false,
+    configure_diagnostics = false,
+}
 
-    lsp.ensure_installed {
-        'gopls',
-        'lua_ls',
-        'rust_analyzer',
-        'vimls',
-    }
+lsp.on_attach(on_attach)
 
-    lsp.on_attach(on_attach)
+local configs = {}
 
-    lsp.configure('lua_ls', {
-        settings = {
-            Lua = {
-                diagnostics = {
-                    globals = { 'use', 'vim' },
-                },
-                workspace = {
-                    library = {
-                        [vim.fn.expand '$VIMRUNTIME/lua'] = true,
-                        [vim.fn.expand '$VIMRUNTIME/lua/vim/lsp'] = true,
-                    },
+configs.lua_ls = {
+    settings = {
+        Lua = {
+            diagnostics = {
+                globals = { 'use', 'vim' },
+            },
+            workspace = {
+                library = {
+                    [vim.fn.expand '$VIMRUNTIME/lua'] = true,
+                    [vim.fn.expand '$VIMRUNTIME/lua/vim/lsp'] = true,
                 },
             },
         },
-    })
+    },
+}
 
-    local lspconfig = require 'lspconfig'
-    local server_names = { 'clangd', 'ocamllsp', 'pyright', 'ruby_ls' }
-
-    for _, server_name in ipairs(server_names) do
-        lspconfig[server_name].setup {}
+local ok, custom = pcall(require, 'custom.lsp')
+if ok then
+    for server_name, server_configuration in pairs(custom) do
+        configs[server_name] = server_configuration
     end
-
-    lsp.setup()
 end
 
-if pcall(require, 'metals') then
-    vim.api.nvim_create_autocmd('FileType', {
-        group = vim.api.nvim_create_augroup('nvim-metals', { clear = true }),
-        pattern = { 'scala', 'sbt' },
-        callback = function()
-            local config = require('metals').bare_config()
+local lspconfig = require 'lspconfig'
 
-            config.init_options.statusBarProvider = 'on'
-            config.settings = { showImplicitArguments = true }
-            config.capabilities = require('cmp_nvim_lsp').default_capabilities()
-
-            config.on_attach = function(client, bufnr)
-                require('metals').setup_dap()
-                on_attach(client, bufnr)
-                set_keymap(bufnr, 'n', '<leader>ss', '<cmd>Telescope metals commands<cr>')
-            end
-
-            require('metals').initialize_or_attach(config)
-        end,
-    })
+for server_name, server_configuration in pairs(configs) do
+    lspconfig[server_name].setup(server_configuration)
 end
+
+lsp.setup()
