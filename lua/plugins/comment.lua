@@ -1,6 +1,4 @@
-local M = {}
-
-table.insert(M, {
+return {
     'numToStr/Comment.nvim',
     config = function()
         require('Comment').setup {
@@ -10,10 +8,6 @@ table.insert(M, {
             },
         }
 
-        local ft = require 'Comment.ft'
-
-        ft.set('json', { '//%s', '/*%s*/' })
+        require('Comment.ft').set('json', { '//%s', '/*%s*/' })
     end,
-})
-
-return M
+}

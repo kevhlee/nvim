@@ -1,11 +1,8 @@
-vim.opt.background = 'dark'
-vim.opt.completeopt = 'menuone,noselect'
 vim.opt.fixeol = false
 vim.opt.hlsearch = false
 vim.opt.incsearch = true
 vim.opt.number = true
 vim.opt.relativenumber = true
-vim.opt.scrolloff = 8
 vim.opt.splitbelow = true
 vim.opt.splitright = true
 vim.opt.swapfile = false

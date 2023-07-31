@@ -1,6 +1,4 @@
-local M = {}
-
-table.insert(M, {
+return {
     'lukas-reineke/indent-blankline.nvim',
     config = function()
         require('indent_blankline').setup {
@@ -10,6 +8,4 @@ table.insert(M, {
             context_char = '▏',
         }
     end,
-})
-
-return M
+}

@@ -1,37 +1,14 @@
-local M = {}
-
-table.insert(M, {
+return {
     'nvim-lualine/lualine.nvim',
-    dependencies = {
-        'nvim-tree/nvim-web-devicons',
-        'arkav/lualine-lsp-progress',
-    },
+    dependencies = { 'arkav/lualine-lsp-progress' },
     config = function()
         require('lualine').setup {
             options = {
                 theme = 'auto',
-                icons_enabled = true,
                 globalstatus = true,
-                component_separators = { left = '', right = '' },
-                section_separators = {
-                    left = '',
-                    right = '',
-                    -- left = '', right = '',
-                    -- left = '', right = '',
-                },
-                ignore_focus = {
-                    'NvimTree',
-                },
-                disabled_filetypes = {
-                    statusline = {
-                        'alpha',
-                        'packer',
-                    },
-                    winbar = {
-                        'alpha',
-                        'packer',
-                    },
-                },
+                component_separators = '',
+                section_separators = '',
+                ignore_focus = { 'NvimTree' },
                 refresh = {
                     statusline = 1000,
                     tabline = 1000,
@@ -78,13 +55,6 @@ table.insert(M, {
                 lualine_y = { 'progress' },
                 lualine_z = { 'location' },
             },
-            extensions = {
-                'fugitive',
-                'nvim-dap-ui',
-                'nvim-tree',
-            },
         }
     end,
-})
-
-return M
+}

@@ -1,34 +1,28 @@
-local M = {}
-
-table.insert(M, {
-    'nvim-telescope/telescope-fzf-native.nvim',
-    build = 'make',
-})
-
-table.insert(M, {
+return {
     'nvim-telescope/telescope.nvim',
     dependencies = {
         'nvim-lua/plenary.nvim',
+        'nvim-tree/nvim-web-devicons',
         'nvim-telescope/telescope-file-browser.nvim',
+        'nvim-telescope/telescope-ui-select.nvim',
+        {
+            'nvim-telescope/telescope-fzf-native.nvim',
+            build = 'make',
+        },
     },
     config = function()
-        require('telescope').setup {
+        local telescope = require 'telescope'
+
+        telescope.setup {
             defaults = {
-                color_devicons = true,
-                winblend = 0,
                 prompt_prefix = '🔭 ',
                 sorting_strategy = 'ascending',
-                selection_strategy = 'reset',
                 layout_strategy = 'horizontal',
                 layout_config = {
                     horizontal = {
                         prompt_position = 'top',
                         preview_width = 0.55,
                         results_width = 0.9,
-                    },
-                    vertical = {
-                        prompt_position = 'top',
-                        mirror = true,
                     },
                 },
                 file_ignore_patterns = {
@@ -40,53 +34,39 @@ table.insert(M, {
             pickers = {
                 find_files = {
                     hidden = true,
+                    no_ignore = true,
                 },
                 live_grep = {
                     hidden = true,
                 },
             },
             extensions = {
-                fzf = {
-                    fuzzy = true,
-                    override_generic_sorter = true,
-                    override_file_sorter = true,
-                },
                 file_browser = {
-                    hijack_netrw = false,
                     hidden = true,
+                    hijack_netrw = true,
                     respect_gitignore = false,
                 },
             },
         }
 
-        -- ##
-        -- ## Extensions
-        -- ##
+        telescope.load_extension 'file_browser'
+        telescope.load_extension 'fzf'
+        telescope.load_extension 'ui-select'
 
-        require('telescope').load_extension 'fzf'
-        require('telescope').load_extension 'file_browser'
+        vim.keymap.set('n', '<leader>ff', '<cmd>Telescope find_files<cr>')
+        vim.keymap.set('n', '<leader>fg', '<cmd>Telescope live_grep<cr>')
+        vim.keymap.set('n', '<leader>fb', '<cmd>Telescope buffers<cr>')
+        vim.keymap.set('n', '<leader>fm', '<cmd>Telescope marks<cr>')
+        vim.keymap.set('n', '<leader>fk', '<cmd>Telescope keymaps<cr>')
+        vim.keymap.set('n', '<leader>f?', '<cmd>Telescope file_browser<cr>')
+        vim.keymap.set(
+            'n',
+            '<leader>f/',
+            '<cmd>Telescope file_browser path=%:p:h select_buffer=true<cr>'
+        )
 
-        -- ##
-        -- ## Keymaps
-        -- ##
-
-        local keymap = vim.keymap
-
-        keymap.set('n', '<leader>ff', '<cmd>Telescope find_files<cr>')
-        keymap.set('n', '<leader>fg', '<cmd>Telescope live_grep<cr>')
-        keymap.set('n', '<leader>fj', '<cmd>Telescope jumplist<cr>')
-        keymap.set('n', '<leader>fm', '<cmd>Telescope marks<cr>')
-        keymap.set('n', '<leader>fk', '<cmd>Telescope keymaps<cr>')
-        keymap.set('n', '<leader>fr', '<cmd>Telescope registers<cr>')
-        keymap.set('n', '<leader>fb', '<cmd>Telescope buffers<cr>')
-        keymap.set('n', '<leader>f/', '<cmd>Telescope file_browser<cr>')
-
-        keymap.set('n', '<leader>ggc', '<cmd>Telescope git_commits<cr>')
-        keymap.set('n', '<leader>ggb', '<cmd>Telescope git_branches<cr>')
-        keymap.set('n', '<leader>ggs', '<cmd>Telescope git_status<cr>')
-        keymap.set('n', '<leader>ggt', '<cmd>Telescope git_stash<cr>')
-        keymap.set('n', '<leader>ggf', '<cmd>Telescope git_files<cr>')
+        vim.keymap.set('n', '<leader>ggc', '<cmd>Telescope git_commits<cr>')
+        vim.keymap.set('n', '<leader>ggb', '<cmd>Telescope git_bcommits<cr>')
+        vim.keymap.set('n', '<leader>ggs', '<cmd>Telescope git_status<cr>')
     end,
-})
-
-return M
+}

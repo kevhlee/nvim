@@ -1,20 +1,12 @@
-local M = {}
-
-table.insert(M, {
+return {
     'nvim-treesitter/nvim-treesitter',
     config = function()
         require('nvim-treesitter.configs').setup {
             auto_install = true,
-            ensure_installed = {
-                'lua',
-                'markdown',
-                'vim',
-            },
+            ensure_installed = { 'lua', 'vim' },
             highlight = {
                 enable = true,
             },
         }
     end,
-})
-
-return M
+}
