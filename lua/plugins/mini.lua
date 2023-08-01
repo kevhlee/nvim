@@ -3,7 +3,6 @@ local M = {}
 table.insert(M, {
     'echasnovski/mini.hipatterns',
     version = '*',
-    enabled = true,
     config = function()
         local hipatterns = require 'mini.hipatterns'
 
@@ -64,26 +63,24 @@ table.insert(M, {
 table.insert(M, {
     'echasnovski/mini.move',
     version = '*',
-    config = function()
-        require('mini.move').setup {
-            -- Move selection in Visual mode
-            mappings = {
-                left = '',
-                right = '',
-                down = '<C-j>',
-                up = '<C-k>',
+    opts = {
+        -- Move selection in Visual mode
+        mappings = {
+            left = '',
+            right = '',
+            down = '<C-j>',
+            up = '<C-k>',
 
-                -- Move current line in Normal mode
-                line_left = '',
-                line_right = '',
-                line_down = '',
-                line_up = '',
-            },
-            options = {
-                reindent_linewise = false,
-            },
-        }
-    end,
+            -- Move current line in Normal mode
+            line_left = '',
+            line_right = '',
+            line_down = '',
+            line_up = '',
+        },
+        options = {
+            reindent_linewise = false,
+        },
+    },
 })
 
 return M
