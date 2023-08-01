@@ -3,7 +3,6 @@ return {
     dependencies = {
         'nvim-lua/plenary.nvim',
         'nvim-tree/nvim-web-devicons',
-        'nvim-telescope/telescope-file-browser.nvim',
         'nvim-telescope/telescope-ui-select.nvim',
         {
             'nvim-telescope/telescope-fzf-native.nvim',
@@ -40,16 +39,8 @@ return {
                     hidden = true,
                 },
             },
-            extensions = {
-                file_browser = {
-                    hidden = true,
-                    hijack_netrw = true,
-                    respect_gitignore = false,
-                },
-            },
         }
 
-        telescope.load_extension 'file_browser'
         telescope.load_extension 'fzf'
         telescope.load_extension 'ui-select'
 
@@ -58,12 +49,6 @@ return {
         vim.keymap.set('n', '<leader>fb', '<cmd>Telescope buffers<cr>')
         vim.keymap.set('n', '<leader>fm', '<cmd>Telescope marks<cr>')
         vim.keymap.set('n', '<leader>fk', '<cmd>Telescope keymaps<cr>')
-        vim.keymap.set('n', '<leader>f?', '<cmd>Telescope file_browser<cr>')
-        vim.keymap.set(
-            'n',
-            '<leader>f/',
-            '<cmd>Telescope file_browser path=%:p:h select_buffer=true<cr>'
-        )
 
         vim.keymap.set('n', '<leader>ggc', '<cmd>Telescope git_commits<cr>')
         vim.keymap.set('n', '<leader>ggb', '<cmd>Telescope git_bcommits<cr>')
