@@ -1,6 +1,7 @@
 return {
     'nvim-lualine/lualine.nvim',
     dependencies = { 'arkav/lualine-lsp-progress' },
+    config = true,
     opts = {
         options = {
             theme = 'auto',
@@ -55,5 +56,4 @@ return {
             lualine_z = { 'location' },
         },
     },
-    config = true,
 }

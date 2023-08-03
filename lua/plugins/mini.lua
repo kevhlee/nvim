@@ -2,7 +2,7 @@ local M = {}
 
 table.insert(M, {
     'echasnovski/mini.hipatterns',
-    version = '*',
+    tag = 'v0.9.0',
     config = function()
         local hipatterns = require 'mini.hipatterns'
 
@@ -34,35 +34,8 @@ table.insert(M, {
 })
 
 table.insert(M, {
-    'echasnovski/mini.map',
-    version = '*',
-    config = function()
-        local minimap = require 'mini.map'
-
-        minimap.setup {
-            symbols = {
-                encode = minimap.gen_encode_symbols.dot '3x2',
-                scroll_line = '▶',
-                scroll_view = '┋',
-            },
-            window = {
-                focusable = false,
-                side = 'right',
-                width = 15,
-                winblend = 25,
-            },
-        }
-
-        vim.keymap.set('n', '<leader>tm', minimap.toggle)
-        vim.keymap.set('n', '<leader>tf', minimap.toggle_focus)
-
-        minimap.open()
-    end,
-})
-
-table.insert(M, {
     'echasnovski/mini.move',
-    version = '*',
+    tag = 'v0.9.0',
     opts = {
         -- Move selection in Visual mode
         mappings = {

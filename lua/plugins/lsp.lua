@@ -1,5 +1,10 @@
 local set_keymap = function(bufnr, mode, lhs, rhs)
-    vim.keymap.set(mode, lhs, rhs, { buffer = bufnr, noremap = true, silent = true })
+    vim.keymap.set(
+        mode,
+        lhs,
+        rhs,
+        { buffer = bufnr, noremap = true, silent = true }
+    )
 end
 
 local on_attach = function(client, bufnr)
@@ -10,9 +15,19 @@ local on_attach = function(client, bufnr)
     set_keymap(bufnr, 'n', '<C-k>', lsp.buf.signature_help)
     set_keymap(bufnr, 'n', '<leader>gD', lsp.buf.declaration)
     set_keymap(bufnr, 'n', '<leader>gd', '<cmd>Telescope lsp_definitions<cr>')
-    set_keymap(bufnr, 'n', '<leader>gi', '<cmd>Telescope lsp_implementations<cr>')
+    set_keymap(
+        bufnr,
+        'n',
+        '<leader>gi',
+        '<cmd>Telescope lsp_implementations<cr>'
+    )
     set_keymap(bufnr, 'n', '<leader>gr', '<cmd>Telescope lsp_references<cr>')
-    set_keymap(bufnr, 'n', '<leader>gt', '<cmd>Telescope lsp_type_definitions<cr>')
+    set_keymap(
+        bufnr,
+        'n',
+        '<leader>gt',
+        '<cmd>Telescope lsp_type_definitions<cr>'
+    )
     set_keymap(bufnr, 'n', '<leader>dl', '<cmd>Telescope diagnostics<cr>')
     set_keymap(bufnr, 'n', '<leader>do', diagnostic.open_float)
     set_keymap(bufnr, 'n', '<leader>dk', diagnostic.goto_prev)
@@ -31,13 +46,21 @@ local on_attach = function(client, bufnr)
             'v:lua.vim.lsp.formatexpr(#{timeout_ms:250})'
         )
 
-        vim.api.nvim_buf_create_user_command(bufnr, 'LspRangeFormat', function(args)
-            vim.lsp.buf.format {
-                bufnr = bufnr,
-                async = false,
-                range = { start = { args.line1, 0 }, ['end'] = { args.line2, 0 } },
-            }
-        end, { range = true, desc = 'LSP range format' })
+        vim.api.nvim_buf_create_user_command(
+            bufnr,
+            'LspRangeFormat',
+            function(args)
+                vim.lsp.buf.format {
+                    bufnr = bufnr,
+                    async = false,
+                    range = {
+                        start = { args.line1, 0 },
+                        ['end'] = { args.line2, 0 },
+                    },
+                }
+            end,
+            { range = true, desc = 'LSP range format' }
+        )
 
         set_keymap(
             bufnr,
@@ -50,6 +73,7 @@ end
 
 return {
     'VonHeikemen/lsp-zero.nvim',
+    version = 'v2.x',
     dependencies = {
         -- LSP Support
         'neovim/nvim-lspconfig',

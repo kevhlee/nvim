@@ -1,8 +1,4 @@
-local M = {}
-
-table.insert(M, 'tpope/vim-fugitive')
-
-table.insert(M, {
+return {
     'lewis6991/gitsigns.nvim',
     config = function()
         local gitsigns = require 'gitsigns'
@@ -10,6 +6,7 @@ table.insert(M, {
         gitsigns.setup {
             attach_to_untracked = true,
             max_file_length = 69420,
+            update_debounce = 100,
             current_line_blame_formatter = '<author>, <author_time:%Y-%m-%d> <abbrev_sha> - <summary>',
             current_line_blame_opts = {
                 virt_text_pos = 'eol',
@@ -50,8 +47,5 @@ table.insert(M, {
         vim.keymap.set('n', '<leader>hj', '<cmd>Gitsigns next_hunk<cr>')
         vim.keymap.set('n', '<leader>hk', '<cmd>Gitsigns prev_hunk<cr>')
         vim.keymap.set('n', '<leader>tb', gitsigns.toggle_current_line_blame)
-        vim.keymap.set('n', '<leader>td', gitsigns.toggle_deleted)
     end,
-})
-
-return M
+}
