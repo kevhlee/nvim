@@ -17,7 +17,11 @@ return {
                 sorting_strategy = 'ascending',
                 layout_strategy = 'horizontal',
                 layout_config = {
-                    horizontal = { prompt_position = 'top' },
+                    horizontal = {
+                        prompt_position = 'top',
+                        preview_width = 0.55,
+                        results_width = 0.9,
+                    },
                 },
                 file_ignore_patterns = {
                     '.DS_Store',
