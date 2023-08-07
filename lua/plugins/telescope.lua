@@ -32,7 +32,7 @@ return {
             pickers = {
                 find_files = {
                     hidden = true,
-                    no_ignore = true,
+                    no_ignore = false,
                 },
                 live_grep = {
                     max_results = 100,
