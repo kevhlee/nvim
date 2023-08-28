@@ -8,7 +8,7 @@ return {
             globalstatus = true,
             component_separators = '',
             section_separators = '',
-            ignore_focus = { 'NvimTree' },
+            ignore_focus = { 'NvimTree', 'TelescopePrompt' },
             refresh = {
                 statusline = 1000,
                 tabline = 1000,
