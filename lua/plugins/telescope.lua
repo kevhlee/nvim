@@ -13,6 +13,7 @@ return {
 
         telescope.setup {
             defaults = {
+                color_devicons = false,
                 prompt_prefix = '🔭 ',
                 sorting_strategy = 'ascending',
                 layout_strategy = 'horizontal',
@@ -43,6 +44,7 @@ return {
                     hidden = true,
                     hijack_netrw = false,
                     respect_gitignore = false,
+                    initial_mode = 'normal',
                 },
             },
         }

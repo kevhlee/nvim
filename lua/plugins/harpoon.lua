@@ -7,7 +7,7 @@ return {
         vim.keymap.set('n', '<leader>mm', require('harpoon.mark').add_file)
         vim.keymap.set(
             'n',
-            '<leader>ml',
+            '<leader>fm',
             require('harpoon.ui').toggle_quick_menu
         )
     end,
