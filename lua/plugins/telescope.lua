@@ -1,6 +1,5 @@
 return {
     'nvim-telescope/telescope.nvim',
-    tag = '0.1.2',
     dependencies = {
         'nvim-lua/plenary.nvim',
         'nvim-tree/nvim-web-devicons',
@@ -26,6 +25,7 @@ return {
                 },
                 file_ignore_patterns = {
                     '.DS_Store',
+                    '.cache/',
                     '.git/',
                     'node_modules/',
                 },
@@ -66,5 +66,16 @@ return {
         vim.keymap.set('n', '<leader>ggc', '<cmd>Telescope git_commits<cr>')
         vim.keymap.set('n', '<leader>ggb', '<cmd>Telescope git_bcommits<cr>')
         vim.keymap.set('n', '<leader>ggs', '<cmd>Telescope git_status<cr>')
+
+        -- See https://github.com/nvim-telescope/telescope.nvim/issues/559
+
+        vim.api.nvim_create_autocmd('BufRead', {
+            callback = function()
+                vim.api.nvim_create_autocmd('BufWinEnter', {
+                    once = true,
+                    command = 'normal! zx',
+                })
+            end,
+        })
     end,
 }

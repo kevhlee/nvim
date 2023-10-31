@@ -2,7 +2,6 @@ local M = {}
 
 table.insert(M, {
     'echasnovski/mini.hipatterns',
-    tag = 'v0.9.0',
     config = function()
         local hipatterns = require 'mini.hipatterns'
 
@@ -35,7 +34,6 @@ table.insert(M, {
 
 table.insert(M, {
     'echasnovski/mini.move',
-    tag = 'v0.9.0',
     opts = {
         -- Move selection in Visual mode
         mappings = {

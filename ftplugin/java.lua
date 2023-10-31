@@ -5,8 +5,13 @@ end
 local home_dir = os.getenv 'HOME'
 local sdkman_dir = os.getenv 'SDKMAN_DIR'
 
-local root_dir =
-    require('jdtls.setup').find_root { 'gradlew', 'mvnw', 'build.xml', '.git' }
+local root_dir = require('jdtls.setup').find_root {
+    'gradlew',
+    'mvnw',
+    'build.xml',
+    '.git',
+}
+
 local jdtls_dir = home_dir .. '/.local/share/eclipse/jdtls'
 
 local workspace_folder = home_dir
@@ -99,13 +104,13 @@ local config = {
 -- Extensions
 --
 
+local bundles = vim.list_extend(
+    {},
+    vim.split(vim.fn.glob(jdtls_dir .. '/extensions/*.jar', 1), '\n')
+)
+
 config.init_options = {
-    bundles = {
-        vim.fn.glob(
-            jdtls_dir .. '/extensions/com.microsoft.java.debug.plugin-*.jar',
-            1
-        ),
-    },
+    bundles = bundles,
 }
 
 require('jdtls').start_or_attach(config)
