@@ -20,80 +20,86 @@ local workspace_folder = home_dir
 
 -- Configurations found here: https://marketplace.visualstudio.com/items?itemName=redhat.java
 
-local config = {
-    cmd = { jdtls_dir .. '/bin/jdtls', '-data', workspace_folder },
-    root_dir = require('jdtls.setup').find_root { '.git', 'mvnw', 'gradlew' },
-    on_attach = require('lsp').on_attach,
-    settings = {
-        java = {
-            autobuild = { enabled = false },
-            signatureHelp = {
+local config = {}
+
+config.cmd = { jdtls_dir .. '/bin/jdtls', '-data', workspace_folder }
+config.root_dir = require('jdtls.setup').find_root { '.git', 'mvnw', 'gradlew' }
+config.on_attach = require('lsp').on_attach
+
+config.settings = {
+    java = {
+        format = {
+            settings = {
+                -- url = "https://raw.githubusercontent.com/google/styleguide/gh-pages/eclipse-java-google-style.xml",
+            },
+        },
+        autobuild = { enabled = false },
+        signatureHelp = {
+            enabled = true,
+            description = {
                 enabled = true,
-                description = {
-                    enabled = true,
-                },
             },
-            contentProvider = { preferred = 'fernflower' },
-            saveActions = { organizeImports = false },
-            completion = {
-                favoriteStaticMembers = {
-                    'io.crate.testing.Asserts.assertThat',
-                    'org.assertj.core.api.Assertions.assertThat',
-                    'org.assertj.core.api.Assertions.assertThatThrownBy',
-                    'org.assertj.core.api.Assertions.assertThatExceptionOfType',
-                    'org.assertj.core.api.Assertions.catchThrowable',
-                    'org.hamcrest.MatcherAssert.assertThat',
-                    'org.hamcrest.Matchers.*',
-                    'org.hamcrest.CoreMatchers.*',
-                    'org.junit.jupiter.api.Assertions.*',
-                    'java.util.Objects.requireNonNull',
-                    'java.util.Objects.requireNonNullElse',
-                    'org.mockito.Mockito.*',
-                },
-                filteredTypes = {
-                    'com.sun.*',
-                    'io.micrometer.shaded.*',
-                    'java.awt.*',
-                    'jdk.*',
-                    'sun.*',
-                },
+        },
+        contentProvider = { preferred = 'fernflower' },
+        saveActions = { organizeImports = false },
+        completion = {
+            favoriteStaticMembers = {
+                'io.crate.testing.Asserts.assertThat',
+                'org.assertj.core.api.Assertions.assertThat',
+                'org.assertj.core.api.Assertions.assertThatThrownBy',
+                'org.assertj.core.api.Assertions.assertThatExceptionOfType',
+                'org.assertj.core.api.Assertions.catchThrowable',
+                'org.hamcrest.MatcherAssert.assertThat',
+                'org.hamcrest.Matchers.*',
+                'org.hamcrest.CoreMatchers.*',
+                'org.junit.jupiter.api.Assertions.*',
+                'java.util.Objects.requireNonNull',
+                'java.util.Objects.requireNonNullElse',
+                'org.mockito.Mockito.*',
             },
-            sources = {
-                organizeImports = {
-                    starThreshold = 9999,
-                    staticStarThreshold = 9999,
-                },
+            filteredTypes = {
+                'com.sun.*',
+                'io.micrometer.shaded.*',
+                'java.awt.*',
+                'jdk.*',
+                'sun.*',
             },
-            codeGeneration = {
-                toString = {
-                    template = '${object.className}{${member.name()}=${member.value}, ${otherMembers}}',
-                },
-                hashCodeEquals = {
-                    useJava7Objects = true,
-                },
-                useBlocks = true,
-                insertionLocation = 'afterCursor',
+        },
+        sources = {
+            organizeImports = {
+                starThreshold = 9999,
+                staticStarThreshold = 9999,
             },
-            project = {
-                resourceFilters = {
-                    'node_modules',
-                    '.git',
-                },
+        },
+        codeGeneration = {
+            toString = {
+                template = '${object.className}{${member.name()}=${member.value}, ${otherMembers}}',
             },
-            configuration = {
-                runtimes = {
-                    {
-                        name = 'JavaSE-17',
-                        path = sdkman_dir .. '/candidates/java/17.0.8-amzn',
-                    },
-                    {
-                        name = 'JavaSE-11',
-                        path = sdkman_dir .. '/candidates/java/11.0.20-amzn',
-                    },
-                    {
-                        name = 'JavaSE-1.8',
-                        path = sdkman_dir .. '/candidates/java/8.0.382-amzn',
-                    },
+            hashCodeEquals = {
+                useJava7Objects = true,
+            },
+            useBlocks = true,
+            insertionLocation = 'afterCursor',
+        },
+        project = {
+            resourceFilters = {
+                'node_modules',
+                '.git',
+            },
+        },
+        configuration = {
+            runtimes = {
+                {
+                    name = 'JavaSE-17',
+                    path = sdkman_dir .. '/candidates/java/17.0.8-amzn',
+                },
+                {
+                    name = 'JavaSE-11',
+                    path = sdkman_dir .. '/candidates/java/11.0.20-amzn',
+                },
+                {
+                    name = 'JavaSE-1.8',
+                    path = sdkman_dir .. '/candidates/java/8.0.382-amzn',
                 },
             },
         },

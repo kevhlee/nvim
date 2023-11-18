@@ -1,4 +1,40 @@
-return {
+local M = {}
+
+table.insert(M, {
+    'numToStr/Comment.nvim',
+    config = function()
+        require('Comment').setup {
+            padding = true,
+            mappings = {
+                basic = true,
+            },
+        }
+
+        require('Comment.ft').set('json', { '//%s', '/*%s*/' })
+    end,
+})
+
+table.insert(M, {
+    'ThePrimeagen/harpoon',
+    dependencies = { 'nvim-lua/plenary.nvim' },
+    config = function()
+        require('harpoon').setup()
+
+        vim.keymap.set('n', '<leader>mm', function()
+            local relative_filepath = vim.fn.expand '%:.'
+            require('harpoon.mark').add_file(relative_filepath)
+            print('Mark added for', relative_filepath)
+        end)
+
+        vim.keymap.set(
+            'n',
+            '<leader>fm',
+            require('harpoon.ui').toggle_quick_menu
+        )
+    end,
+})
+
+table.insert(M, {
     'nvim-telescope/telescope.nvim',
     dependencies = {
         'nvim-lua/plenary.nvim',
@@ -78,4 +114,41 @@ return {
             end,
         })
     end,
-}
+})
+
+table.insert(M, {
+    'pocco81/true-zen.nvim',
+    dependencies = { 'folke/twilight.nvim' },
+    config = function()
+        require('true-zen').setup {
+            modes = {
+                ataraxis = {
+                    shade = 'dark',
+                    backdrop = 0,
+                    quit_untoggles = true,
+                    callbacks = {
+                        open_pre = function()
+                            require('barbecue.ui').toggle(false)
+                        end,
+                        close_pos = function()
+                            require('barbecue.ui').toggle(true)
+                        end,
+                    },
+                },
+            },
+            integrations = {
+                tmux = true,
+                twilight = true,
+                lualine = true,
+                kitty = {
+                    enabled = true,
+                    font = '+1',
+                },
+            },
+        }
+
+        vim.keymap.set('n', '<leader>tz', '<cmd>TZAtaraxis<cr>')
+    end,
+})
+
+return M

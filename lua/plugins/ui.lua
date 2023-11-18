@@ -1,4 +1,31 @@
-return {
+local M = {}
+
+table.insert(M, {
+    'utilyre/barbecue.nvim',
+    dependencies = {
+        'SmiteshP/nvim-navic',
+        'nvim-tree/nvim-web-devicons',
+    },
+    config = function()
+        require('barbecue').setup()
+
+        vim.keymap.set('n', '<leader>tw', require('barbecue.ui').toggle)
+    end,
+})
+
+table.insert(M, {
+    'lukas-reineke/indent-blankline.nvim',
+    version = '2.20.8',
+    config = true,
+    opts = {
+        show_current_context = true,
+        show_current_context_start = true,
+        char = '▏',
+        context_char = '▏',
+    },
+})
+
+table.insert(M, {
     'nvim-lualine/lualine.nvim',
     dependencies = { 'arkav/lualine-lsp-progress' },
     config = true,
@@ -56,4 +83,38 @@ return {
             lualine_z = { 'location' },
         },
     },
-}
+})
+
+table.insert(M, {
+    'echasnovski/mini.hipatterns',
+    config = function()
+        local hipatterns = require 'mini.hipatterns'
+
+        hipatterns.setup {
+            highlighters = {
+                -- Highlight standalone 'FIXME', 'HACK', 'TODO', 'NOTE'
+                fixme = {
+                    pattern = '%f[%w]()FIXME()%f[%W]',
+                    group = 'MiniHipatternsFixme',
+                },
+                hack = {
+                    pattern = '%f[%w]()HACK()%f[%W]',
+                    group = 'MiniHipatternsHack',
+                },
+                todo = {
+                    pattern = '%f[%w]()TODO()%f[%W]',
+                    group = 'MiniHipatternsTodo',
+                },
+                note = {
+                    pattern = '%f[%w]()NOTE()%f[%W]',
+                    group = 'MiniHipatternsNote',
+                },
+
+                -- Highlight hex color strings (`#rrggbb`) using that color
+                hex_color = hipatterns.gen_highlighter.hex_color(),
+            },
+        }
+    end,
+})
+
+return M

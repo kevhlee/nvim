@@ -1,4 +1,6 @@
-return {
+local M = {}
+
+table.insert(M, {
     'lewis6991/gitsigns.nvim',
     config = function()
         local gitsigns = require 'gitsigns'
@@ -47,4 +49,8 @@ return {
         vim.keymap.set('n', '<leader>hj', '<cmd>Gitsigns next_hunk<cr>')
         vim.keymap.set('n', '<leader>hk', '<cmd>Gitsigns prev_hunk<cr>')
     end,
-}
+})
+
+table.insert(M, { 'tpope/vim-fugitive' })
+
+return M

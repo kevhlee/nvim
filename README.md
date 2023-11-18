@@ -21,6 +21,7 @@ To customize and configure Neovim, create a `lua/custom` directory containing th
 ./lua
 └── custom
     ├── globals.lua     // Set up globals
+    ├── keymaps.lua     // Set up key mappings
     ├── lsp.lua         // Set up configurations for LSP servers
     ├── options.lua     // Set up options
     └── plugins         // Store plugin configurations
