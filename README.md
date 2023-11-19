@@ -6,26 +6,21 @@ Uses [lazy.nvim](https://github.com/folke/lazy.nvim) as the package manager.
 
 ## Setup
 
-Clone this repository into `$HOME/.config/nvim`:
+Before proceeding, if you already have a Neovim configuration, create a backup 
+so you can restore your current Neovim setup:
 
-```bash
-$ mkdir -p $HOME/.config/nvim
-$ git clone --depth 1 https://github.com/kevhlee/nvim-config.git $HOME/.config/nvim
+```sh
+# required
+mv ~/.config/nvim{,.bak}
+
+# optional but recommended
+mv ~/.local/share/nvim{,.bak}
+mv ~/.local/state/nvim{,.bak}
+mv ~/.cache/nvim{,.bak}
 ```
 
-## Customization
+Clone this repository into `$HOME/.config/nvim`:
 
-To customize and configure Neovim, create a `lua/custom` directory containing the following files:
-
-```log
-./lua
-└── custom
-    ├── globals.lua     // Set up globals
-    ├── keymaps.lua     // Set up key mappings
-    ├── lsp.lua         // Set up configurations for LSP servers
-    ├── options.lua     // Set up options
-    └── plugins         // Store plugin configurations
-        ├── plugin_a.lua
-        ├── plugin_b.lua
-        └── ...
+```sh
+$ git clone --depth 1 https://github.com/kevhlee/nvim-config.git $HOME/.config/nvim
 ```

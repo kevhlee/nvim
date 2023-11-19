@@ -39,8 +39,8 @@ luac.out
 *.x86_64
 *.hex
 
-# Custom
-lua/custom/
+# Configuration
+lua/custom
 lazy-lock.json
 
 # OS-specific

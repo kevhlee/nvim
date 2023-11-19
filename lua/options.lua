@@ -1,18 +1,20 @@
-vim.opt.fixeol = false
-vim.opt.hlsearch = false
-vim.opt.incsearch = true
-vim.opt.number = true
-vim.opt.relativenumber = true
-vim.opt.splitbelow = true
-vim.opt.splitright = true
-vim.opt.swapfile = false
-vim.opt.termguicolors = true
-vim.opt.undofile = true
-vim.opt.wrap = false
+vim.o.expandtab = true
+vim.o.fixeol = false
+vim.o.hlsearch = false
+vim.o.incsearch = true
+vim.o.number = true
+vim.o.relativenumber = true
+vim.o.smartindent = true
+vim.o.splitbelow = true
+vim.o.splitright = true
+vim.o.swapfile = false
+vim.o.termguicolors = true
+vim.o.undofile = true
+vim.o.wrap = false
 
-local ok, custom = pcall(require, 'custom.options')
-if ok then
-    for key, value in pairs(custom) do
-        vim.opt[key] = value
+local ok, options = pcall(require, "custom.options")
+if ok and type(options) == "table" then
+    for key, value in pairs(options) do
+        vim.o[key] = value
     end
 end
