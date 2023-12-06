@@ -35,6 +35,16 @@ table.insert(M, {
 })
 
 table.insert(M, {
+    "felipeagc/fleet-theme-nvim",
+    pin = true,
+    priority = 1000,
+    cond = vim.g.colorscheme == "fleet",
+    config = function()
+        vim.cmd("colorscheme fleet")
+    end,
+})
+
+table.insert(M, {
     "ellisonleao/gruvbox.nvim",
     tag = "2.0.0",
     pin = true,
