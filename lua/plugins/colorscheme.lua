@@ -8,6 +8,10 @@ table.insert(M, {
     config = function()
         require("ayu").setup({
             mirage = false,
+            overrides = {
+                LineNr = { fg = "#8A9199" },
+                Statement = { fg = "#FF6565" },
+            },
         })
         vim.cmd("colorscheme ayu")
     end,
