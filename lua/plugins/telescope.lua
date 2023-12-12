@@ -45,6 +45,7 @@ M.config = function()
                 hijack_netrw = false,
                 respect_gitignore = false,
                 initial_mode = "normal",
+                git_status = false,
             },
         },
     })
