@@ -15,9 +15,8 @@ M.config = function()
         defaults = {
             file_ignore_patterns = {
                 ".DS_Store",
-                ".cache/",
-                ".git/",
-                "node_modules/",
+                "^.git/",
+                "^node_modules/",
             },
             layout_config = {
                 horizontal = {
