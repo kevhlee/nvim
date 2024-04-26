@@ -1,7 +1,5 @@
 local M = {
     "lewis6991/gitsigns.nvim",
-    tag = "v0.6",
-    pin = true,
 }
 
 M.config = function()

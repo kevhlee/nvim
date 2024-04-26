@@ -1,6 +1,5 @@
 return {
     "j-hui/fidget.nvim",
-    pin = true,
     opts = {
         progress = {
             ignore = {}, -- List of LSP servers to ignore

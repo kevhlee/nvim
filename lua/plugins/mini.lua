@@ -1,7 +1,5 @@
 return {
     "echasnovski/mini.hipatterns",
-    tag = "v0.11.0",
-    pin = true,
     opts = function()
         return {
             highlighters = {

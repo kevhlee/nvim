@@ -1,6 +1,27 @@
-local M = {}
+local M = {
+    "VonHeikemen/lsp-zero.nvim",
+    branch = "v3.x",
+    dependencies = {
+        -- LSP Support
+        { "neovim/nvim-lspconfig" },
+        { "williamboman/mason.nvim" },
+        { "williamboman/mason-lspconfig.nvim" },
 
-M.lsp_on_attach = function(client, bufnr)
+        -- Autocompletion
+        { "hrsh7th/nvim-cmp" },
+        { "hrsh7th/cmp-nvim-lsp" },
+        { "hrsh7th/cmp-nvim-lua" },
+        { "hrsh7th/cmp-buffer" },
+        { "hrsh7th/cmp-path" },
+        { "saadparwaiz1/cmp_luasnip" },
+
+        -- Snippets
+        { "L3MON4D3/LuaSnip" },
+        { "rafamadriz/friendly-snippets" },
+    },
+}
+
+local function on_attach(client, bufnr)
     local opts = { buffer = bufnr, noremap = true, silent = true }
 
     vim.keymap.set("n", "K", vim.lsp.buf.hover, opts)
@@ -31,6 +52,25 @@ M.lsp_on_attach = function(client, bufnr)
 
     -- For disabling syntax highlighting from LSP
     client.server_capabilities.semanticTokensProvider = nil
+end
+
+M.config = function()
+    local lsp_zero = require("lsp-zero")
+
+    lsp_zero.on_attach(on_attach)
+    lsp_zero.setup_servers({ "clangd", "ocamllsp", "pyright" })
+
+    require("mason").setup()
+
+    require("mason-lspconfig").setup({
+        ensure_installed = { "lua_ls" },
+        handlers = {
+            lsp_zero.default_setup,
+            lua_ls = function()
+                require("lspconfig").lua_ls.setup(require("lsp-zero").nvim_lua_ls())
+            end,
+        },
+    })
 end
 
 return M

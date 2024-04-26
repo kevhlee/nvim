@@ -1,16 +1,45 @@
-return {
+local M = {
     "ThePrimeagen/harpoon",
-    pin = true,
-    dependencies = { "nvim-lua/plenary.nvim", pin = true },
-    config = function()
-        require("harpoon").setup()
-
-        vim.keymap.set("n", "<leader>mm", function()
-            local relative_filepath = vim.fn.expand("%:.")
-            require("harpoon.mark").add_file(relative_filepath)
-            print("Mark added for", relative_filepath)
-        end)
-
-        vim.keymap.set("n", "<leader>fm", require("harpoon.ui").toggle_quick_menu)
-    end,
+    branch = "harpoon2",
+    dependencies = {
+        "nvim-lua/plenary.nvim",
+    },
 }
+
+M.config = function()
+    local harpoon = require("harpoon")
+
+    harpoon.setup({
+        settings = {
+            sync_on_toggle = false,
+            sync_on_ui_close = false,
+        },
+    })
+
+    harpoon:extend({
+        UI_CREATE = function(ctx)
+            vim.keymap.set("n", "<C-v>", function()
+                harpoon.ui:select_menu_item({ vsplit = true })
+            end, { buffer = ctx.bufnr })
+
+            vim.keymap.set("n", "<C-x>", function()
+                harpoon.ui:select_menu_item({ split = true })
+            end, { buffer = ctx.bufnr })
+
+            vim.keymap.set("n", "<C-t>", function()
+                harpoon.ui:select_menu_item({ tabedit = true })
+            end, { buffer = ctx.bufnr })
+        end,
+    })
+
+    vim.keymap.set("n", "<leader>mm", function()
+        harpoon:list():add()
+        print("Mark added for", vim.fn.expand("%:."))
+    end)
+
+    vim.keymap.set("n", "<leader>fm", function()
+        harpoon.ui:toggle_quick_menu(harpoon:list())
+    end)
+end
+
+return M

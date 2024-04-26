@@ -10,10 +10,9 @@ Before proceeding, if you already have a Neovim configuration, create a backup
 so you can restore your current Neovim setup:
 
 ```sh
-# required
 mv ~/.config/nvim{,.bak}
 
-# optional but recommended
+# optional
 mv ~/.local/share/nvim{,.bak}
 mv ~/.local/state/nvim{,.bak}
 mv ~/.cache/nvim{,.bak}

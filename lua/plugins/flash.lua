@@ -1,7 +1,5 @@
 local M = {
     "folke/flash.nvim",
-    tag = "v1.18.2",
-    pin = true,
     lazy = true,
     event = "VeryLazy",
     opts = {
