@@ -1,9 +1,9 @@
 local M = {
     "ThePrimeagen/harpoon",
+    dependencies = { "nvim-lua/plenary.nvim" },
     branch = "harpoon2",
-    dependencies = {
-        "nvim-lua/plenary.nvim",
-    },
+    lazy = true,
+    event = "VeryLazy",
 }
 
 M.config = function()

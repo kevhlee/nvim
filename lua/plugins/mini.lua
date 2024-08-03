@@ -1,5 +1,7 @@
 return {
     "echasnovski/mini.hipatterns",
+    lazy = true,
+    event = "VeryLazy",
     opts = function()
         return {
             highlighters = {
