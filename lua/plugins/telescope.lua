@@ -8,9 +8,7 @@ local M = {
 }
 
 M.config = function()
-    local telescope = require("telescope")
-
-    telescope.setup({
+    require("telescope").setup({
         defaults = {
             file_ignore_patterns = {
                 ".DS_Store",
@@ -24,6 +22,12 @@ M.config = function()
             },
             layout_strategy = "horizontal",
             sorting_strategy = "ascending",
+            mappings = {
+                i = {
+                    ["<C-j>"] = require("telescope.actions").cycle_history_next,
+                    ["<C-k>"] = require("telescope.actions").cycle_history_prev,
+                },
+            },
         },
         pickers = {
             find_files = {
@@ -45,8 +49,8 @@ M.config = function()
         },
     })
 
-    telescope.load_extension("file_browser")
-    telescope.load_extension("ui-select")
+    require("telescope").load_extension("file_browser")
+    require("telescope").load_extension("ui-select")
 
     vim.keymap.set("n", "<leader>ff", "<cmd>Telescope find_files<cr>")
     vim.keymap.set("n", "<leader>fg", "<cmd>Telescope live_grep<cr>")
@@ -58,6 +62,8 @@ M.config = function()
     vim.keymap.set("n", "<leader>f'", "<cmd>Telescope git_status<cr>")
     vim.keymap.set("n", "<leader>f;", "<cmd>Telescope git_bcommits<cr>")
     vim.keymap.set("n", "<leader>f:", "<cmd>Telescope git_branches<cr>")
+
+    vim.keymap.set("n", "<leader>F", "<cmd>Telescope resume<cr>")
 end
 
 return M
