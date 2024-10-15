@@ -1,6 +1,6 @@
 # My Neovim Configuration
 
-My personal (and highly opinionated) configuration for [Neovim](https://neovim.io/).
+My personal and highly opinionated configuration for [Neovim](https://neovim.io/).
 
 This configuration was designed to be extensible so that I can use it in any 
 context (e.g. personal projects, work). This configuration uses [lazy.nvim](https://github.com/folke/lazy.nvim) for 
@@ -11,6 +11,7 @@ plugin management.
 __Prerequisites:__
 
 - [BurntSushi/ripgrep](https://github.com/BurntSushi/ripgrep)
+- [JohnnyMorganz/StyLua](https://github.com/JohnnyMorganz/StyLua) (optional)
 
 Clone this repository into `$HOME/.config/nvim`:
 
