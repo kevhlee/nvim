@@ -34,7 +34,8 @@ This Neovim configuration has the following structure:
 └── lua
     ├── globals.lua  # Sets global variables (i.e. `vim.g`)
     ├── keymaps.lua  # Sets general key mappings
-    └── options.lua  # Sets option variables (i.e. `vim.o`)
+    ├── options.lua  # Sets option variables (i.e. `vim.o`)
+    └── plugins/     # Contains plugin configurations
 ```
 
 To add/override configurations in `lua/globals.lua` or `lua/options.lua`, simply create a file with the same name in 
@@ -82,3 +83,4 @@ return {
     termguicolors = true,
 }
 ```
+
