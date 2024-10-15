@@ -8,6 +8,10 @@ plugin management.
 
 ## Setup
 
+__Prerequisites:__
+
+- [BurntSushi/ripgrep](https://github.com/BurntSushi/ripgrep)
+
 Clone this repository into `$HOME/.config/nvim`:
 
 ```sh
