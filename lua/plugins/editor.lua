@@ -99,11 +99,13 @@ table.insert(M, {
         require("nvim-treesitter.configs").setup({
             ensure_installed = {
                 "bash",
+                "json",
                 "lua",
                 "markdown",
                 "python",
                 "vim",
                 "vimdoc",
+                "xml",
             },
             auto_install = false,
             highlight = {
