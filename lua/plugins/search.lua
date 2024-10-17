@@ -73,6 +73,11 @@ M.keys = {
         "<cmd>Telescope registers<cr>",
         desc = "(Telescope) Display contents of registers",
     },
+    {
+        "<leader>fd",
+        "<cmd>Telescope diagnostics<cr>",
+        desc = "(Telescope) Display diagnostics",
+    },
 }
 
 return M
