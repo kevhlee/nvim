@@ -13,6 +13,7 @@ M.opts = {
         "permissions",
     },
     keymaps = {
+        ["<Esc>"] = "actions.close",
         ["<C-h>"] = "actions.show_help",
         ["<C-r>"] = "actions.refresh",
         ["<C-o>"] = "actions.open_external",
