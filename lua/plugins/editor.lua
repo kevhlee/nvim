@@ -6,8 +6,7 @@ local M = {}
 
 table.insert(M, {
     "echasnovski/mini.hipatterns",
-    lazy = true,
-    event = "VeryLazy",
+    event = { "BufReadPre", "BufNewFile" },
     opts = function()
         return {
             highlighters = {
@@ -40,8 +39,7 @@ table.insert(M, {
 table.insert(M, {
     "lukas-reineke/indent-blankline.nvim",
     main = "ibl",
-    lazy = true,
-    event = "VeryLazy",
+    event = { "BufReadPre", "BufNewFile" },
     opts = {
         scope = {
             enabled = true,
@@ -60,6 +58,7 @@ table.insert(M, {
 
 table.insert(M, {
     "nvim-lualine/lualine.nvim",
+    event = { "BufReadPre", "BufNewFile" },
     dependencies = {
         { "nvim-tree/nvim-web-devicons" },
     },
@@ -95,6 +94,7 @@ table.insert(M, {
 
 table.insert(M, {
     "nvim-treesitter/nvim-treesitter",
+    event = { "BufReadPre", "BufNewFile" },
     config = function()
         require("nvim-treesitter.configs").setup({
             ensure_installed = {
@@ -122,6 +122,7 @@ table.insert(M, {
 
 table.insert(M, {
     "utilyre/barbecue.nvim",
+    event = { "BufReadPre", "BufNewFile" },
     dependencies = {
         { "SmiteshP/nvim-navic" },
         { "nvim-tree/nvim-web-devicons" },

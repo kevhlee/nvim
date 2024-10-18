@@ -1,7 +1,5 @@
 local M = {
     "stevearc/oil.nvim",
-    lazy = true,
-    event = "VeryLazy",
     dependencies = {
         { "nvim-tree/nvim-web-devicons" },
     },

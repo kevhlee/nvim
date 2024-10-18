@@ -2,8 +2,7 @@ local M = {}
 
 table.insert(M, {
     "tpope/vim-sleuth",
-    lazy = true,
-    event = "VeryLazy",
+    event = { "BufReadPre", "BufNewFile" },
 })
 
 return M

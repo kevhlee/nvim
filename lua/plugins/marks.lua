@@ -1,8 +1,6 @@
 local M = {
     "ThePrimeagen/harpoon",
     branch = "harpoon2",
-    lazy = true,
-    event = "VeryLazy",
     dependencies = {
         { "nvim-lua/plenary.nvim" },
     },
@@ -33,19 +31,29 @@ M.config = function()
             end, { buffer = ctx.bufnr })
         end,
     })
-
-    vim.keymap.set("n", "<leader>mm", function()
-        harpoon:list():add()
-
-        vim.notify(
-            "Mark added for" .. vim.fn.expand("%:."),
-            vim.log.levels.INFO
-        )
-    end)
-
-    vim.keymap.set("n", "<leader>fm", function()
-        harpoon.ui:toggle_quick_menu(harpoon:list())
-    end)
 end
+
+M.keys = {
+    {
+        "<leader>mm",
+        function()
+            require("harpoon"):list():add()
+
+            vim.notify(
+                "Mark added for " .. vim.fn.expand("%:."),
+                vim.log.levels.INFO
+            )
+        end,
+        desc = "(Harpoon) Mark current file",
+    },
+    {
+        "<leader>fm",
+        function()
+            local harpoon = require("harpoon")
+            harpoon.ui:toggle_quick_menu(harpoon:list())
+        end,
+        desc = "(Harpoon) Display marks",
+    },
+}
 
 return M

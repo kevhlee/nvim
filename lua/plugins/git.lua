@@ -2,14 +2,11 @@ local M = {}
 
 table.insert(M, {
     "tpope/vim-fugitive",
-    lazy = true,
-    event = "VeryLazy",
+    cmd = "Git",
 })
 
 table.insert(M, {
     "lewis6991/gitsigns.nvim",
-    lazy = true,
-    event = "VeryLazy",
     opts = {
         attach_to_untracked = true,
         max_file_length = 9999,
