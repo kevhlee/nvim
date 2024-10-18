@@ -12,6 +12,11 @@ local M = {
         -- Sources
         { "hrsh7th/cmp-nvim-lsp" },
         { "hrsh7th/cmp-buffer" },
+        { "saadparwaiz1/cmp_luasnip" },
+
+        -- Snippets
+        { "L3MON4D3/LuaSnip", version = "v2.*" },
+        { "rafamadriz/friendly-snippets" },
     },
 }
 
@@ -19,9 +24,13 @@ M.config = function()
     local cmp = require("cmp")
     local cmp_action = require("lsp-zero").cmp_action()
 
+    -- See https://github.com/L3MON4D3/LuaSnip?tab=readme-ov-file#add-snippets
+    require("luasnip.loaders.from_vscode").lazy_load()
+
     cmp.setup({
         sources = {
             { name = "nvim_lsp" },
+            { name = "luasnip" },
             { name = "buffer" },
         },
         mapping = cmp.mapping.preset.insert({
