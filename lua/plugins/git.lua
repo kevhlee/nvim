@@ -7,6 +7,7 @@ table.insert(M, {
 
 table.insert(M, {
     "lewis6991/gitsigns.nvim",
+    event = { "BufReadPre", "BufNewFile" },
     opts = {
         attach_to_untracked = true,
         max_file_length = 9999,
