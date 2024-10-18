@@ -3,6 +3,7 @@ local M = {
     lazy = true,
     event = "VeryLazy",
     dependencies = {
+        { "nvim-telescope/telescope-ui-select.nvim" },
         { "nvim-lua/plenary.nvim" },
         { "nvim-tree/nvim-web-devicons" },
     },
@@ -40,6 +41,8 @@ M.config = function()
             },
         },
     })
+
+    require("telescope").load_extension("ui-select")
 
     require("lsp").add_to_attach(function(_, bufnr)
         local opts = { buffer = bufnr }
