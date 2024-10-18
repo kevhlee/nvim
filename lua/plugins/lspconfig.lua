@@ -4,7 +4,19 @@ local M = {
     event = { "BufReadPre", "BufNewFile" },
     dependencies = {
         { "hrsh7th/cmp-nvim-lsp" },
-        { "williamboman/mason.nvim" },
+        {
+            "williamboman/mason.nvim",
+            cmd = {
+                "Mason",
+                "MasonInstall",
+                "MasonLog",
+                "MasonUninstall",
+                "MasonUpdate",
+            },
+            config = function()
+                require("mason").setup()
+            end,
+        },
         { "williamboman/mason-lspconfig.nvim" },
     },
 }
@@ -23,7 +35,6 @@ M.config = function()
 
     local configs = require("lsp").get_configs(default_config)
 
-    require("mason").setup()
     require("mason-lspconfig").setup({
         ensure_installed = { "lua_ls" },
         handlers = {
