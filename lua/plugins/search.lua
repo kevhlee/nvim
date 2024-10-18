@@ -8,8 +8,8 @@ local M = {
     },
 }
 
-M.opts = function()
-    return {
+M.config = function()
+    require("telescope").setup({
         defaults = {
             file_ignore_patterns = {
                 ".DS_Store",
@@ -39,7 +39,26 @@ M.opts = function()
                 max_results = 999,
             },
         },
-    }
+    })
+
+    require("lsp").add_to_attach(function(_, bufnr)
+        local opts = { buffer = bufnr }
+
+        vim.keymap.set("n", "gd", "<cmd>Telescope lsp_definition<cr>", opts)
+        vim.keymap.set(
+            "n",
+            "gi",
+            "<cmd>Telescope lsp_implementations<cr>",
+            opts
+        )
+        vim.keymap.set(
+            "n",
+            "go",
+            "<cmd>Telescope lsp_type_definitions<cr>",
+            opts
+        )
+        vim.keymap.set("n", "gr", "<cmd>Telescope lsp_references<cr>", opts)
+    end)
 end
 
 M.keys = {

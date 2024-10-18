@@ -1,4 +1,10 @@
 local M = {}
+local attach_fn_list = {}
+
+--- @param fn fun(client: vim.lsp.Client, bufnr: integer)
+M.add_to_attach = function(fn)
+    table.insert(attach_fn_list, fn)
+end
 
 --- @param client vim.lsp.Client
 --- @param bufnr integer
@@ -22,6 +28,10 @@ M.default_on_attach = function(client, bufnr)
     end
     if client.server_capabilities.documentRangeFormattingProvider then
         vim.keymap.set("v", "<leader>cf", vim.lsp.buf.format, opts)
+    end
+
+    for _, attach_fn in ipairs(attach_fn_list) do
+        attach_fn(client, bufnr)
     end
 end
 
