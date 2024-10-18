@@ -30,7 +30,8 @@ M.config = function()
                     ["<C-j>"] = actions.cycle_history_next,
                     ["<C-k>"] = actions.cycle_history_prev,
                     ["<C-q>"] = actions.send_to_qflist + actions.open_qflist,
-                    ["<M-q>"] = actions.send_selected_to_qflist + actions.open_qflist,
+                    ["<M-q>"] = actions.send_selected_to_qflist
+                        + actions.open_qflist,
                 },
             },
             sorting_strategy = "ascending",

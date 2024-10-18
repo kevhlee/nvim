@@ -116,4 +116,27 @@ table.insert(M, {
     end,
 })
 
+--
+-- Winbar
+--
+
+table.insert(M, {
+    "utilyre/barbecue.nvim",
+    dependencies = {
+        { "SmiteshP/nvim-navic" },
+        { "nvim-tree/nvim-web-devicons" },
+    },
+    config = function()
+        require("barbecue").setup({
+            attach_navic = false,
+        })
+
+        require("lsp").add_to_attach(function(client, bufnr)
+            if client.server_capabilities.documentSymbolProvider then
+                require("nvim-navic").attach(client, bufnr)
+            end
+        end)
+    end,
+})
+
 return M
