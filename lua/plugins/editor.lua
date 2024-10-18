@@ -1,6 +1,34 @@
 local M = {}
 
 --
+-- Buffers
+--
+
+table.insert(M, {
+    "tpope/vim-sleuth",
+    event = { "BufReadPre", "BufNewFile" },
+})
+
+--
+-- Comments
+--
+
+table.insert(M, {
+    "numToStr/Comment.nvim",
+    event = { "BufReadPre", "BufNewFile" },
+    config = function()
+        require("Comment").setup({
+            padding = true,
+            mappings = {
+                basic = true,
+            },
+        })
+
+        require("Comment.ft").set("json", { "//%s", "/*%s*/" })
+    end,
+})
+
+--
 -- Colors
 --
 
