@@ -100,6 +100,16 @@ M.keys = {
         "<cmd>Telescope diagnostics<cr>",
         desc = "(Telescope) Display diagnostics",
     },
+    {
+        "<leader>f'",
+        "<cmd>Telescope git_status<cr>",
+        desc = "(Telescope) Display Git status",
+    },
+    {
+        "<leader>f/",
+        "<cmd>Telescope git_branches<cr>",
+        desc = "(Telescope) Display Git branches",
+    },
 }
 
 return M
