@@ -3,6 +3,7 @@ local M = {
     cmd = { "LspInfo", "LspInstall", "LspStart" },
     event = { "BufReadPre", "BufNewFile" },
     dependencies = {
+        { "hrsh7th/cmp-nvim-lsp" },
         { "williamboman/mason.nvim" },
         { "williamboman/mason-lspconfig.nvim" },
     },
@@ -14,7 +15,13 @@ M.config = function()
     vim.lsp.handlers["textDocument/signature_help"] =
         vim.lsp.with(vim.lsp.handlers.signature_help, { border = "rounded" })
 
-    local configs = require("lsp").get_configs()
+    local default_config =
+        vim.tbl_deep_extend("force", require("lspconfig").util.default_config, {
+            capabilities = require("cmp_nvim_lsp").default_capabilities(),
+            on_attach = require("lsp").default_on_attach,
+        })
+
+    local configs = require("lsp").get_configs(default_config)
 
     require("mason").setup()
     require("mason-lspconfig").setup({
@@ -22,9 +29,7 @@ M.config = function()
         handlers = {
             function(name)
                 if configs[name] == nil then
-                    require("lspconfig")[name].setup(
-                        require("lsp").default_config
-                    )
+                    require("lspconfig")[name].setup(default_config)
                 end
             end,
         },

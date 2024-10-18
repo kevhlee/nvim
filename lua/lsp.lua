@@ -35,18 +35,6 @@ M.default_on_attach = function(client, bufnr)
     end
 end
 
--- Based on https://github.com/neovim/nvim-lspconfig/blob/v1.0.0/lua/lspconfig/util.lua
-M.default_config = {
-    log_level = vim.lsp.protocol.MessageType.Warning,
-    message_level = vim.lsp.protocol.MessageType.Warning,
-    settings = vim.empty_dict(),
-    init_options = vim.empty_dict(),
-    handlers = {},
-    autostart = true,
-    capabilities = vim.lsp.protocol.make_client_capabilities(),
-    on_attach = M.default_on_attach,
-}
-
 --- @param client vim.lsp.Client
 M.disable_code_formatting = function(client)
     client.server_capabilities.documentFormattingProvider = false
@@ -58,15 +46,16 @@ M.disable_semantic_highlighting = function(client)
     client.server_capabilities.semanticTokensProvider = nil
 end
 
+--- @param default_config vim.lsp.ClientConfig
 --- @return table<string, vim.lsp.ClientConfig>
-M.get_configs = function()
+M.get_configs = function(default_config)
     local configs = {}
     local ok, override = pcall(require, "custom.lsp")
     if ok and type(override) == "table" then
         for name, get_config in pairs(override) do
             configs[name] = vim.tbl_deep_extend(
                 "force",
-                M.default_config,
+                default_config,
                 get_config({
                     default_on_attach = M.default_on_attach,
                     disable_code_formatting = M.disable_code_formatting,
