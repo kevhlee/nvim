@@ -10,6 +10,8 @@ local M = {
 }
 
 M.config = function()
+    local actions = require("telescope.actions")
+
     require("telescope").setup({
         defaults = {
             file_ignore_patterns = {
@@ -25,8 +27,10 @@ M.config = function()
             layout_strategy = "horizontal",
             mappings = {
                 i = {
-                    ["<C-j>"] = require("telescope.actions").cycle_history_next,
-                    ["<C-k>"] = require("telescope.actions").cycle_history_prev,
+                    ["<C-j>"] = actions.cycle_history_next,
+                    ["<C-k>"] = actions.cycle_history_prev,
+                    ["<C-q>"] = actions.send_to_qflist + actions.open_qflist,
+                    ["<M-q>"] = actions.send_selected_to_qflist + actions.open_qflist,
                 },
             },
             sorting_strategy = "ascending",
@@ -99,6 +103,11 @@ M.keys = {
         "<leader>fd",
         "<cmd>Telescope diagnostics<cr>",
         desc = "(Telescope) Display diagnostics",
+    },
+    {
+        "<leader>fq",
+        "<cmd>Telescope quickfix<cr>",
+        desc = "(Telescope) Open quickfix list",
     },
     {
         "<leader>f'",
