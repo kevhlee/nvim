@@ -47,7 +47,7 @@ M.config = function()
     require("lsp").add_to_attach(function(_, bufnr)
         local opts = { buffer = bufnr }
 
-        vim.keymap.set("n", "gd", "<cmd>Telescope lsp_definition<cr>", opts)
+        vim.keymap.set("n", "gd", "<cmd>Telescope lsp_definitions<cr>", opts)
         vim.keymap.set(
             "n",
             "gi",
