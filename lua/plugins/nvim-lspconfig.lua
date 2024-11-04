@@ -1,6 +1,7 @@
 local M = {
     "neovim/nvim-lspconfig",
     dependencies = {
+        { "hrsh7th/cmp-nvim-lsp" },
         { "williamboman/mason.nvim" },
         { "williamboman/mason-lspconfig.nvim" },
     },
@@ -31,7 +32,8 @@ end
 
 M.config = function()
     local config =
-        vim.tbl_extend("force", require("lspconfig").util.default_config, {
+        vim.tbl_deep_extend("force", require("lspconfig").util.default_config, {
+            capabilities = require("cmp_nvim_lsp").default_capabilities(),
             on_attach = on_attach,
         })
 
