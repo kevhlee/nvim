@@ -40,7 +40,7 @@ luac.out
 *.hex
 
 # Configuration
-lua/custom
+lua/override
 lazy-lock.json
 
 # OS-specific
