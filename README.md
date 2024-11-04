@@ -6,6 +6,12 @@ Uses [lazy.nvim](https://github.com/folke/lazy.nvim) as the package manager.
 
 ## Setup
 
+__Dependencies:__
+
+- gcc
+- make
+- [ripgrep](https://github.com/BurntSushi/ripgrep/)
+
 Before proceeding, if you already have a Neovim configuration, create a backup 
 so you can restore your current Neovim setup:
 
