@@ -12,6 +12,7 @@ __Dependencies:__
 - make
 - [Go](https://golang.google.cn/) (1.21+)
 - [ripgrep](https://github.com/BurntSushi/ripgrep/)
+- [StyLua](https://github.com/JohnnyMorganz/StyLua/) (optional)
 
 Before proceeding, if you already have a Neovim configuration, create a backup 
 so you can restore your current Neovim setup:

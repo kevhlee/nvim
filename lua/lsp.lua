@@ -18,13 +18,6 @@ M.default_on_attach = function(client, bufnr)
     vim.keymap.set("n", "gs", vim.lsp.buf.signature_help, opts)
     vim.keymap.set("n", "<leader>cr", vim.lsp.buf.rename, opts)
     vim.keymap.set("n", "<leader>ca", vim.lsp.buf.code_action, opts)
-
-    if client.server_capabilities.documentFormattingProvider then
-        vim.keymap.set("n", "<leader>cf", vim.lsp.buf.format, opts)
-    end
-    if client.server_capabilities.documentRangeFormattingProvider then
-        vim.keymap.set("v", "<leader>cf", vim.lsp.buf.format, opts)
-    end
 end
 
 --- @param defaults vim.lsp.ClientConfig
