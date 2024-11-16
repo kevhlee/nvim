@@ -1,11 +1,10 @@
 local M = {
     "folke/flash.nvim",
-}
-
-M.opts = {
-    modes = {
-        char = {
-            enabled = false,
+    opts = {
+        modes = {
+            char = {
+                enabled = false,
+            },
         },
     },
 }

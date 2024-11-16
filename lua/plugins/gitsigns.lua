@@ -2,28 +2,27 @@ local M = {
     "lewis6991/gitsigns.nvim",
     cmd = "Gitsigns",
     event = "BufReadPost",
-}
-
-M.opts = {
-    attach_to_untracked = true,
-    current_line_blame_formatter = "<author>, <author_time:%Y-%m-%d> <abbrev_sha> - <summary>",
-    -- stylua: ignore
-    signs = {
-        add          = { text = "┆" },
-        change       = { text = "┆" },
-        delete       = { text = "_" },
-        topdelete    = { text = "‾" },
-        changedelete = { text = "~" },
-        untracked    = { text = "┆" },
-    },
-    -- stylua: ignore
-    signs_staged = {
-        add          = { text = "┆" },
-        change       = { text = "┆" },
-        delete       = { text = '_' },
-        topdelete    = { text = '‾' },
-        changedelete = { text = '~' },
-        untracked    = { text = '┆' },
+    opts = {
+        attach_to_untracked = true,
+        current_line_blame_formatter = "<author>, <author_time:%Y-%m-%d> <abbrev_sha> - <summary>",
+        -- stylua: ignore
+        signs = {
+            add          = { text = "┆" },
+            change       = { text = "┆" },
+            delete       = { text = "_" },
+            topdelete    = { text = "‾" },
+            changedelete = { text = "~" },
+            untracked    = { text = "┆" },
+        },
+        -- stylua: ignore
+        signs_staged = {
+            add          = { text = "┆" },
+            change       = { text = "┆" },
+            delete       = { text = "_" },
+            topdelete    = { text = "‾" },
+            changedelete = { text = "~" },
+            untracked    = { text = "┆" },
+        },
     },
 }
 

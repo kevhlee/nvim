@@ -4,6 +4,9 @@ local M = {
         { "nvim-tree/nvim-web-devicons" },
     },
     event = "VimEnter",
+    keys = {
+        { "-", "<Cmd>Oil<CR>", desc = "(Oil) Open file browser" },
+    },
 }
 
 M.opts = {
@@ -30,10 +33,6 @@ M.opts = {
     view_options = {
         show_hidden = true,
     },
-}
-
-M.keys = {
-    { "-", "<Cmd>Oil<CR>", desc = "(Oil) Open file browser" },
 }
 
 return M

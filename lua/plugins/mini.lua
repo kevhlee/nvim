@@ -38,17 +38,16 @@ end
 local indentscope = {
     "echasnovski/mini.indentscope",
     event = "BufReadPost",
-}
+    opts = {
+        mappings = {
+            -- Textobjects
+            object_scope = "ii",
+            object_scope_with_border = "ai",
 
-indentscope.opts = {
-    mappings = {
-        -- Textobjects
-        object_scope = "ii",
-        object_scope_with_border = "ai",
-
-        -- Motions
-        goto_top = "[i",
-        goto_bottom = "]i",
+            -- Motions
+            goto_top = "[i",
+            goto_bottom = "]i",
+        },
     },
 }
 
