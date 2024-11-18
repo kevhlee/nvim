@@ -1,15 +1,11 @@
---- @class LspConfigSpec
---- @field config? vim.lsp.ClientConfig
---- @field skip boolean
-
---- @param defaults vim.lsp.ClientConfig
---- @return table<string, LspConfigSpec>
-local function get_config_specs(defaults)
+--- @param default_config vim.lsp.ClientConfig
+--- @return table<string, vim.lsp.ClientConfig>
+local function get_configs(default_config)
     local specs = {}
     local ok, override = pcall(require, "override.lsp")
     if ok and type(override) == "table" then
-        for name, get_spec in pairs(override) do
-            specs[name] = get_spec(defaults)
+        for name, get_config in pairs(override) do
+            specs[name] = get_config(default_config)
         end
     end
     return specs
@@ -53,32 +49,29 @@ local M = {
 }
 
 M.config = function()
-    local defaults =
+    local default_config =
         vim.tbl_deep_extend("force", require("lspconfig").util.default_config, {
             capabilities = require("cmp_nvim_lsp").default_capabilities(),
             on_attach = default_on_attach,
         })
 
-    local specs = get_config_specs(defaults)
+    local configs = get_configs(default_config)
 
     require("mason").setup()
 
     require("mason-lspconfig").setup({
         ensure_installed = { "lua_ls" },
         handlers = {
-            function(server_name)
-                local spec = specs[server_name]
-                if not spec or not spec.skip then
-                    require("lspconfig")[server_name].setup(defaults)
+            function(name)
+                if not configs[name] then
+                    require("lspconfig")[name].setup(default_config)
                 end
             end,
         },
     })
 
-    for name, spec in pairs(specs) do
-        if not spec.skip then
-            require("lspconfig")[name].setup(spec.config or defaults)
-        end
+    for name, config in pairs(configs) do
+        require("lspconfig")[name].setup(config or default_config)
     end
 end
 

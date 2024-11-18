@@ -189,26 +189,28 @@ return {
 The `lua/override/lsp.lua` file is for custom LSP configurations. It return a
 key-value table, where the key is the LSP server name and the value is a
 callback returning a configuration for the LSP client. The callback receives a
-parameter `defaults` containing defaults for a LSP client configuration
+parameter `default_config` containing defaults for a LSP client configuration
 (i.e. `vim.lsp.ClientConfig`).
 
 Example:
 
 ```lua
 -- In 'lua/override/lsp.lua'
-local specs = {}
+local configs = {}
 
-specs["pyright"] = function(defaults)
-    return defaults
+configs["pyright"] = function(default_config)
+    return default_config
 end
 
-specs["lua_ls"] = function(defaults)
+configs["lua_ls"] = function(default_config)
+    local default_on_attach = default_config.on_attach
+
     return vim.tbl_extend(
         "force",
-        defaults,
+        default_config,
         {
             on_attach = function(client, bufnr)
-                defaults.on_attach(client, bufnr)
+                default_on_attach(client, bufnr)
 
                 -- Disable semantic highlighting
                 client.server_capabilities.semanticTokensProvider = nil
@@ -217,7 +219,7 @@ specs["lua_ls"] = function(defaults)
     )
 end
 
-return specs
+return configs
 ```
 
 ### Plugins
