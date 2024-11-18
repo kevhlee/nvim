@@ -159,11 +159,6 @@ M.keys = {
         desc = "(Telescope) List Git status",
     },
     {
-        "<leader>f?",
-        "<Cmd>Telescope git_commits<CR>",
-        desc = "(Telescope) List Git commits for current working directory",
-    },
-    {
         "<leader>f/",
         "<Cmd>Telescope git_bcommits<CR>",
         desc = "(Telescope) List Git commits for current buffer",
