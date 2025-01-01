@@ -52,38 +52,6 @@ local indentscope = {
 }
 
 --
--- Notify
---
-
-local notify = {
-    "echasnovski/mini.notify",
-    event = "UIEnter",
-    config = function()
-        local MiniNotify = require("mini.notify")
-
-        -- stylua: ignore
-        vim.notify = MiniNotify.make_notify({
-            ERROR = { duration = 3000, hl_group = "DiagnosticError"  },
-            WARN  = { duration = 3000, hl_group = "DiagnosticWarn"   },
-            INFO  = { duration = 3000, hl_group = "DiagnosticInfo"   },
-            DEBUG = { duration =    0, hl_group = "DiagnosticHint"   },
-            TRACE = { duration =    0, hl_group = "DiagnosticOk"     },
-            OFF   = { duration =    0, hl_group = "MiniNotifyNormal" },
-        })
-
-        MiniNotify.setup({
-            window = {
-                config = {
-                    border = "none",
-                },
-                max_width_share = 0.45,
-                winblend = 0,
-            },
-        })
-    end,
-}
-
---
 -- Statusline
 --
 
@@ -161,7 +129,6 @@ end
 return {
     hipatterns,
     indentscope,
-    notify,
     statusline,
     tabline,
 }
