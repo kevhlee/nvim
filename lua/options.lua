@@ -3,8 +3,6 @@ local options = {
     hlsearch = false,
     incsearch = true,
     laststatus = 3,
-    list = true,
-    listchars = { tab = "» ", trail = "·", nbsp = "␣" },
     number = true,
     relativenumber = true,
     scrolloff = 12,
