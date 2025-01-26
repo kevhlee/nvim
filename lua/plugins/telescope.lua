@@ -52,9 +52,19 @@ M.config = function()
             },
             find_files = {
                 hidden = true,
+                layout_strategy = "center",
+                layout_config = {
+                    anchor = "N",
+                    width = 0.75,
+                },
             },
             live_grep = {
                 max_results = 200,
+                layout_strategy = "center",
+                layout_config = {
+                    anchor = "N",
+                    width = 0.75,
+                },
             },
         },
         extensions = {
