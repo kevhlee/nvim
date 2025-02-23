@@ -10,6 +10,9 @@ local M = {
         -- Snippets
         { "L3MON4D3/LuaSnip" },
         { "rafamadriz/friendly-snippets" },
+
+        -- Style
+        { "onsails/lspkind.nvim" },
     },
     event = "InsertEnter",
 }
@@ -42,26 +45,9 @@ M.config = function()
         },
         formatting = {
             fields = { "abbr", "kind", "menu" },
-            format = function(entry, item)
-                local name = entry.source.name
-                local label = ""
-
-                if name == "nvim_lsp" then
-                    label = "[lsp]"
-                elseif name == "nvim_lua" then
-                    label = "[nvim]"
-                else
-                    label = string.format("[%s]", name)
-                end
-
-                if item.menu == nil then
-                    item.menu = label
-                else
-                    item.menu = string.format("%s %s", label, item.menu)
-                end
-
-                return item
-            end,
+            format = require("lspkind").cmp_format({
+                mode = "symbol_text",
+            }),
         },
     })
 end
