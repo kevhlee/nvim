@@ -1,6 +1,7 @@
 require("globals")
 require("options")
 require("autocmd")
+require("terminal")
 require("keymaps")
 
 local lazy_path = vim.fn.stdpath("data") .. "/lazy/lazy.nvim"

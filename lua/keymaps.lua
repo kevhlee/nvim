@@ -72,6 +72,10 @@ local keymaps = {
         end,
         opts = { desc = "Toggle location list" },
     },
+
+    -- Terminal
+    { mode = "t", lhs = "<Esc><Esc>", rhs = "<C-\\><C-n>" },
+    { mode = "n", lhs = "<leader>tt", rhs = "<Cmd>FTerm<CR>" },
 }
 
 local ok, override = pcall(require, "override.keymaps")
