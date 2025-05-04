@@ -6,18 +6,14 @@ local keymaps = {
     { mode = "n", lhs = "-", rhs = "<Cmd>Explore<CR>" },
 
     -- Diagnostics
-    { mode = "n", lhs = "[d", rhs = vim.diagnostic.goto_prev },
-    { mode = "n", lhs = "]d", rhs = vim.diagnostic.goto_next },
     { mode = "n", lhs = "gl", rhs = vim.diagnostic.open_float },
 
     -- Buffer
-    { mode = "n", lhs = "[b", rhs = "<Cmd>bprevious<CR>" },
-    { mode = "n", lhs = "]b", rhs = "<Cmd>bnext<CR>" },
     { mode = "n", lhs = "<C-b>d", rhs = "<Cmd>bdelete<CR>" },
 
     -- Tab
-    { mode = "n", lhs = "[t", rhs = "<Cmd>tabprevious<CR>" },
-    { mode = "n", lhs = "]t", rhs = "<Cmd>tabnext<CR>" },
+    { mode = "n", lhs = "<M-h>", rhs = "<Cmd>tabprevious<CR>" },
+    { mode = "n", lhs = "<M-l>", rhs = "<Cmd>tabnext<CR>" },
     { mode = "n", lhs = "<C-t>n", rhs = "<Cmd>tabnew<CR>" },
     { mode = "n", lhs = "<C-t>d", rhs = "<Cmd>tabclose<CR>" },
 
@@ -28,8 +24,6 @@ local keymaps = {
     { mode = "n", lhs = "<C-k>", rhs = "<C-w><C-k>" },
 
     -- Quickfix
-    { mode = "n", lhs = "[q", rhs = "<Cmd>cprevious<CR>" },
-    { mode = "n", lhs = "]q", rhs = "<Cmd>cnext<CR>" },
     { mode = "n", lhs = "<q", rhs = "<Cmd>colder<CR>" },
     { mode = "n", lhs = ">q", rhs = "<Cmd>cnewer<CR>" },
     {
@@ -51,8 +45,6 @@ local keymaps = {
     },
 
     -- Location list
-    { mode = "n", lhs = "[l", rhs = "<Cmd>lprevious<CR>" },
-    { mode = "n", lhs = "]l", rhs = "<Cmd>lnext<CR>" },
     { mode = "n", lhs = "<l", rhs = "<Cmd>lolder<CR>" },
     { mode = "n", lhs = ">l", rhs = "<Cmd>lnewer<CR>" },
     {
@@ -72,10 +64,6 @@ local keymaps = {
         end,
         opts = { desc = "Toggle location list" },
     },
-
-    -- Terminal
-    { mode = "t", lhs = "<Esc><Esc>", rhs = "<C-\\><C-n>" },
-    { mode = "n", lhs = "<leader>tt", rhs = "<Cmd>FTerm<CR>" },
 }
 
 local ok, override = pcall(require, "override.keymaps")

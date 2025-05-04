@@ -1,170 +1,235 @@
---
--- Hipatterns
---
-
-local hipatterns = {
-    "echasnovski/mini.hipatterns",
-    event = "BufReadPost",
-}
-
-hipatterns.opts = function()
-    return {
-        highlighters = {
-            fixme = {
-                pattern = "%f[%w]()FIXME()%f[%W]",
-                group = "MiniHipatternsFixme",
+return {
+    -- Diff
+    {
+        "echasnovski/mini.diff",
+        event = "BufReadPre",
+        keys = {
+            {
+                "<Leader>hp",
+                "<Cmd>lua MiniDiff.toggle_overlay()<CR>",
+                desc = "(MiniDiff) Toggle diff overlay view",
             },
-            hack = {
-                pattern = "%f[%w]()HACK()%f[%W]",
-                group = "MiniHipatternsHack",
+            {
+                "<Leader>hq",
+                function()
+                    vim.fn.setqflist(MiniDiff.export("qf"))
+                    vim.cmd("copen")
+                end,
+                desc = "(MiniDiff) Set quickfix list from all available hunks",
             },
-            todo = {
-                pattern = "%f[%w]()TODO()%f[%W]",
-                group = "MiniHipatternsTodo",
+            {
+                "<Leader>hl",
+                function()
+                    vim.fn.setloclist(
+                        0,
+                        MiniDiff.export("qf", { scope = "current" })
+                    )
+                    vim.cmd("lopen")
+                end,
+                desc = "(MiniDiff) Set quickfix list from all available hunks",
             },
-            note = {
-                pattern = "%f[%w]()NOTE()%f[%W]",
-                group = "MiniHipatternsNote",
+            {
+                "<Leader>hs",
+                function()
+                    vim.cmd.normal("gsgh")
+                end,
+                desc = "(MiniDiff) Stage current hunk",
             },
-            hex_color = require("mini.hipatterns").gen_highlighter.hex_color(),
+            {
+                "<Leader>hS",
+                function()
+                    MiniDiff.do_hunks(0, "apply", {
+                        line_end = vim.api.nvim_buf_line_count(0),
+                        line_start = 1,
+                    })
+                end,
+                desc = "(MiniDiff) Stage current buffer",
+            },
+            {
+                "<Leader>hr",
+                function()
+                    vim.cmd.normal("gSgh")
+                end,
+                desc = "(MiniDiff) Reset current hunk",
+            },
+            {
+                "<Leader>hR",
+                function()
+                    MiniDiff.do_hunks(0, "reset", {
+                        line_end = vim.api.nvim_buf_line_count(0),
+                        line_start = 1,
+                    })
+                end,
+                desc = "(MiniDiff) Reset current buffer",
+            },
         },
-    }
-end
-
---
--- Indentscope
---
-
-local indentscope = {
-    "echasnovski/mini.indentscope",
-    event = "BufReadPost",
-    opts = {
-        mappings = {
-            -- Textobjects
-            object_scope = "ii",
-            object_scope_with_border = "ai",
-
-            -- Motions
-            goto_top = "[i",
-            goto_bottom = "]i",
+        opts = {
+            mappings = {
+                apply = "gs",
+                reset = "gS",
+            },
+            view = {
+                signs = {
+                    add = "┆",
+                    change = "┆",
+                    delete = "_",
+                },
+                style = "sign",
+            },
         },
     },
-}
 
---
--- Notify
---
-
-local notify = {
-    "echasnovski/mini.notify",
-    event = "UIEnter",
-    config = function()
-        local MiniNotify = require("mini.notify")
-
-        -- stylua: ignore
-        vim.notify = MiniNotify.make_notify({
-            ERROR = { duration = 3000, hl_group = "DiagnosticError"  },
-            WARN  = { duration = 3000, hl_group = "DiagnosticWarn"   },
-            INFO  = { duration = 3000, hl_group = "DiagnosticInfo"   },
-            DEBUG = { duration =    0, hl_group = "DiagnosticHint"   },
-            TRACE = { duration =    0, hl_group = "DiagnosticOk"     },
-            OFF   = { duration =    0, hl_group = "MiniNotifyNormal" },
-        })
-
-        MiniNotify.setup({
-            window = {
-                config = {
-                    border = "none",
-                },
-                max_width_share = 0.45,
-                winblend = 0,
+    -- Git
+    {
+        "echasnovski/mini-git",
+        cmd = "Git",
+        event = "BufReadPre",
+        keys = {
+            {
+                "<Leader>hb",
+                function()
+                    MiniGit.show_at_cursor()
+                end,
+                desc = "(MiniGit) Show Git related data at cursor depending on context",
+                mode = { "n", "x" },
             },
-        })
+            {
+                "<Leader>hB",
+                function()
+                    MiniGit.show_at_cursor({
+                        line_end = vim.api.nvim_buf_line_count(0),
+                        line_start = 1,
+                    })
+                end,
+                desc = "(MiniGit) Show Git information for current buffer",
+                mode = "n",
+            },
+        },
+        main = "mini.git",
+        opts = {},
+    },
 
-        vim.api.nvim_set_hl(0, "MiniNotifyLspProgress", { bg = "None" })
-        vim.api.nvim_set_hl(0, "MiniNotifyNormal", { bg = "None" })
-    end,
-}
+    -- Icons
+    {
+        "echasnovski/mini.icons",
+        event = "VimEnter",
+        opts = {},
+    },
 
---
--- Statusline
---
-
-local statusline = {
-    "echasnovski/mini.statusline",
-    event = "UIEnter",
-}
-
-statusline.opts = function()
-    local MiniStatusline = require("mini.statusline")
-
-    return {
-        content = {
-            active = function()
-                -- stylua: ignore start
-                local mode, mode_hl = MiniStatusline.section_mode({ trunc_width = 120 })
-                local git           = MiniStatusline.section_git({ trunc_width = 40 })
-                local diff          = MiniStatusline.section_diff({ trunc_width = 75 })
-                local filename      = MiniStatusline.section_filename({ trunc_width = 140 })
-                local fileinfo      = MiniStatusline.section_fileinfo({ trunc_width = 120 })
-                -- stylua: ignore end
-
-                return MiniStatusline.combine_groups({
-                    {
-                        hl = mode_hl,
-                        strings = { mode },
+    -- Hipatterns
+    {
+        "echasnovski/mini.hipatterns",
+        event = { "BufNewFile", "BufReadPre" },
+        opts = function()
+            return {
+                highlighters = {
+                    fixme = {
+                        pattern = "%f[%w]()FIXME()%f[%W]",
+                        group = "MiniHipatternsFixme",
                     },
-                    {
-                        hl = "MiniStatuslineDevinfo",
-                        strings = { git, diff },
+                    hack = {
+                        pattern = "%f[%w]()HACK()%f[%W]",
+                        group = "MiniHipatternsHack",
                     },
-                    "%<",
-                    {
-                        hl = "MiniStatuslineFilename",
-                        strings = { filename },
+                    todo = {
+                        pattern = "%f[%w]()TODO()%f[%W]",
+                        group = "MiniHipatternsTodo",
                     },
-                    "%=", -- End left alignment
-                    {
-                        hl = "MiniStatuslineFileinfo",
-                        strings = { fileinfo },
+                    note = {
+                        pattern = "%f[%w]()NOTE()%f[%W]",
+                        group = "MiniHipatternsNote",
                     },
-                    {
-                        hl = mode_hl,
-                        strings = { "%l│%2v│%P" },
-                    },
-                })
+                    hex_color = require("mini.hipatterns").gen_highlighter.hex_color(),
+                },
+            }
+        end,
+    },
+
+    -- Indentscope
+    {
+        "echasnovski/mini.indentscope",
+        event = { "BufNewFile", "BufReadPre" },
+        opts = {
+            mappings = {
+                -- Textobjects
+                object_scope = "ii",
+                object_scope_with_border = "ai",
+
+                -- Motions
+                goto_top = "[i",
+                goto_bottom = "]i",
+            },
+        },
+    },
+
+    -- Surround
+    {
+        "echasnovski/mini.surround",
+        event = { "BufNewFile", "BufReadPre" },
+        opts = {},
+    },
+
+    -- Statusline
+    {
+        "echasnovski/mini.statusline",
+        event = "VimEnter",
+        opts = {
+            content = {
+                active = function()
+                    -- stylua: ignore start
+                    local mode, mode_hl = MiniStatusline.section_mode({ trunc_width = 120 })
+                    local git           = MiniStatusline.section_git({ trunc_width = 40 })
+                    local diff          = MiniStatusline.section_diff({ trunc_width = 75 })
+                    local filename      = MiniStatusline.section_filename({ trunc_width = 140 })
+                    local fileinfo      = MiniStatusline.section_fileinfo({ trunc_width = 120 })
+                    -- stylua: ignore end
+
+                    return MiniStatusline.combine_groups({
+                        {
+                            hl = mode_hl,
+                            strings = { mode },
+                        },
+                        {
+                            hl = "MiniStatuslineDevinfo",
+                            strings = { git, diff },
+                        },
+                        "%<",
+                        {
+                            hl = "MiniStatuslineFilename",
+                            strings = { filename },
+                        },
+                        "%=",
+                        {
+                            hl = "MiniStatuslineFileinfo",
+                            strings = { fileinfo },
+                        },
+                        {
+                            hl = mode_hl,
+                            strings = { "%l│%2v│%P" },
+                        },
+                    })
+                end,
+            },
+        },
+    },
+
+    -- Tabline
+    {
+        "echasnovski/mini.tabline",
+        config = function(_, opts)
+            require("mini.tabline").setup(opts)
+
+            vim.api.nvim_set_hl(0, "TabLineFill", { bg = "None" })
+            vim.api.nvim_set_hl(0, "MiniTablineFill", { bg = "None" })
+        end,
+        event = "VimEnter",
+        opts = {
+            format = function(buf_id, label)
+                if vim.bo[buf_id].modified then
+                    label = label .. " +"
+                end
+                return MiniTabline.default_format(buf_id, label)
             end,
         },
-    }
-end
-
---
--- Tabline
---
-
-local tabline = {
-    "echasnovski/mini.tabline",
-    event = "UIEnter",
-}
-
-tabline.config = function()
-    local MiniTabline = require("mini.tabline")
-
-    MiniTabline.setup({
-        format = function(buf_id, label)
-            local suffix = vim.bo[buf_id].modified and "+ " or ""
-            return MiniTabline.default_format(buf_id, label) .. suffix
-        end,
-        tabpage_section = "right",
-    })
-
-    vim.api.nvim_set_hl(0, "MiniTablineFill", { fg = "None", bg = "None" })
-end
-
-return {
-    hipatterns,
-    indentscope,
-    notify,
-    statusline,
-    tabline,
+    },
 }

@@ -1,38 +1,31 @@
-local M = {
+return {
     "stevearc/oil.nvim",
-    dependencies = {
-        { "nvim-tree/nvim-web-devicons" },
-    },
-    event = "VimEnter",
     keys = {
         { "-", "<Cmd>Oil<CR>", desc = "(Oil) Open file browser" },
     },
-}
-
-M.opts = {
-    columns = {
-        "icon",
-        "permissions",
-    },
-    keymaps = {
-        ["q"] = "actions.close",
-        ["<C-v>"] = {
-            "actions.select",
-            opts = { close = true, vertical = true },
-            desc = "Open the entry in a vertical split",
+    opts = {
+        columns = {
+            "icon",
+            "permissions",
         },
-        ["<C-s>"] = {
-            "actions.select",
-            opts = { close = true, horizontal = true },
-            desc = "Open the entry in a horizontal split",
+        keymaps = {
+            ["q"] = "actions.close",
+            ["<C-v>"] = {
+                "actions.select",
+                opts = { close = true, vertical = true },
+                desc = "Open the entry in a vertical split",
+            },
+            ["<C-s>"] = {
+                "actions.select",
+                opts = { close = true, horizontal = true },
+                desc = "Open the entry in a horizontal split",
+            },
+            ["<C-r>"] = "actions.refresh",
+            ["<C-h>"] = false,
+            ["<C-l>"] = false,
         },
-        ["<C-r>"] = "actions.refresh",
-        ["<C-h>"] = false,
-        ["<C-l>"] = false,
-    },
-    view_options = {
-        show_hidden = true,
+        view_options = {
+            show_hidden = true,
+        },
     },
 }
-
-return M

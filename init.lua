@@ -1,13 +1,12 @@
 require("globals")
 require("options")
-require("autocmd")
-require("terminal")
 require("keymaps")
+require("autocmd")
 
 local lazy_path = vim.fn.stdpath("data") .. "/lazy/lazy.nvim"
 local lazy_repo = "https://github.com/folke/lazy.nvim.git"
 
-if not (vim.uv or vim.loop).fs_stat(lazy_path) then
+if not vim.uv.fs_stat(lazy_path) then
     local out = vim.fn.system({
         "git",
         "clone",
@@ -32,9 +31,9 @@ local spec = {
     { import = "plugins" },
 }
 
-if
-    vim.fn.glob(vim.fn.stdpath("config") .. "/lua/override/plugins/*.lua") ~= ""
-then
+local stat = vim.uv.fs_stat(vim.fn.stdpath("config") .. "/lua/override")
+
+if stat and stat.type == "directory" then
     table.insert(spec, { import = "override.plugins" })
 end
 
@@ -49,7 +48,6 @@ require("lazy").setup({
     performance = {
         rtp = {
             disabled_plugins = {
-                "editorconfig",
                 "gzip",
                 "matchit",
                 "matchparen",
@@ -58,7 +56,6 @@ require("lazy").setup({
                 "tarPlugin",
                 "tohtml",
                 "tutor",
-                "zipPlugin",
             },
         },
     },

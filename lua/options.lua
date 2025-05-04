@@ -1,5 +1,12 @@
 local options = {
-    fixeol = false,
+    -- General
+    backup = false,
+    swapfile = false,
+    undofile = true,
+    writebackup = false,
+
+    -- Appearance
+    breakindent = true,
     hlsearch = false,
     incsearch = true,
     laststatus = 3,
@@ -10,10 +17,17 @@ local options = {
     signcolumn = "yes",
     splitbelow = true,
     splitright = true,
-    swapfile = false,
-    timeoutlen = 500,
-    updatetime = 250,
+    termguicolors = true,
     wrap = false,
+
+    -- Editing
+    completeopt = "menu,menuone,noinsert,noselect",
+    fixeol = false,
+    ignorecase = true,
+    smartcase = true,
+    smartindent = true,
+    timeoutlen = 500,
+    virtualedit = "block",
 }
 
 local ok, override = pcall(require, "override.options")
