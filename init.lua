@@ -2,6 +2,7 @@ require("globals")
 require("options")
 require("keymaps")
 require("autocmd")
+require("lsp")
 
 local lazy_path = vim.fn.stdpath("data") .. "/lazy/lazy.nvim"
 local lazy_repo = "https://github.com/folke/lazy.nvim.git"

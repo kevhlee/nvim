@@ -21,7 +21,7 @@ local options = {
     wrap = false,
 
     -- Editing
-    completeopt = "menu,menuone,noinsert,noselect",
+    completeopt = "menu,menuone,noinsert",
     fixeol = false,
     foldexpr = "v:lua.vim.treesitter.foldexpr()",
     foldlevel = 99,

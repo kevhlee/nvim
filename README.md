@@ -168,3 +168,13 @@ M.keys = {
 
 return M
 ```
+
+### LSP
+
+With Neovim 0.11, it is no longer necessary to install and use [`neovim/nvim-lspconfig`](https://github.com/neovim/nvim-lspconfig).
+Neovim provides new APIs for configuring and enabling LSPs: [`vim.lsp.config()`](https://neovim.io/doc/user/lsp.html#vim.lsp.config())
+and [`vim.lsp.enable()`](https://neovim.io/doc/user/lsp.html#vim.lsp.enable()). Additionally, LSP configurations can be defined by
+`lsp/<name of LSP server>.lua` files in the `runtimepath`. Essentially, you can
+create LSP configurations in the `lsp` directory of your Neovim configuration.
+
+See here for more information: <https://neovim.io/doc/user/lsp.html#lsp-config>.
