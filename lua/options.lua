@@ -23,6 +23,9 @@ local options = {
     -- Editing
     completeopt = "menu,menuone,noinsert,noselect",
     fixeol = false,
+    foldexpr = "v:lua.vim.treesitter.foldexpr()",
+    foldlevel = 99,
+    foldmethod = "expr",
     ignorecase = true,
     smartcase = true,
     smartindent = true,
