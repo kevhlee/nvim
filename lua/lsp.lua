@@ -41,17 +41,21 @@ vim.api.nvim_create_autocmd("LspAttach", {
         vim.keymap.set("i", "<C-k>", vim.lsp.buf.signature_help, opts)
         vim.keymap.set("i", "<C-Space>", "<C-x><C-o>", opts)
 
-        vim.keymap.set("i", "<CR>", function()
-            return vim.fn.pumvisible() == 1 and "<C-y>" or "<CR>"
-        end, { expr = true })
-
-        vim.keymap.set("i", "<Tab>", function()
-            return vim.fn.pumvisible() == 1 and "<C-y>" or "<Tab>"
-        end, { expr = true })
+        if pcall(require, "blink.cmp") then
+            return
+        end
 
         local client = assert(vim.lsp.get_client_by_id(args.data.client_id))
 
         if client:supports_method(vim.lsp.protocol.Methods.textDocument_completion) then
+            vim.keymap.set("i", "<CR>", function()
+                return vim.fn.pumvisible() == 1 and "<C-y>" or "<CR>"
+            end, { expr = true })
+
+            vim.keymap.set("i", "<Tab>", function()
+                return vim.fn.pumvisible() == 1 and "<C-y>" or "<Tab>"
+            end, { expr = true })
+
             client.server_capabilities.completionProvider.triggerCharacters =
                 trigger_chars
 
