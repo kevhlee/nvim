@@ -8,8 +8,7 @@ vim.diagnostic.config({
 
 -- Set up LSP progress notifications
 
-local spinner =
-    { "⠋", "⠙", "⠹", "⠸", "⠼", "⠴", "⠦", "⠧", "⠇", "⠏" }
+local spinner = { "⠋", "⠙", "⠹", "⠸", "⠼", "⠴", "⠦", "⠧", "⠇", "⠏" }
 
 vim.api.nvim_create_autocmd("LspProgress", {
     ---@param args {data: {client_id: integer, params: lsp.ProgressParams}}
@@ -52,20 +51,11 @@ vim.api.nvim_create_autocmd("LspAttach", {
 
         local client = assert(vim.lsp.get_client_by_id(args.data.client_id))
 
-        if
-            client:supports_method(
-                vim.lsp.protocol.Methods.textDocument_completion
-            )
-        then
+        if client:supports_method(vim.lsp.protocol.Methods.textDocument_completion) then
             client.server_capabilities.completionProvider.triggerCharacters =
                 trigger_chars
 
-            vim.lsp.completion.enable(
-                true,
-                client.id,
-                args.buf,
-                { autotrigger = true }
-            )
+            vim.lsp.completion.enable(true, client.id, args.buf, { autotrigger = true })
         end
     end,
 })
@@ -74,9 +64,7 @@ vim.api.nvim_create_autocmd("LspAttach", {
 
 vim.api.nvim_create_autocmd({ "BufNewFile", "BufReadPre" }, {
     callback = function()
-        local lsp_names = vim.iter(
-            vim.api.nvim_get_runtime_file("lsp/*.lua", true)
-        )
+        local lsp_names = vim.iter(vim.api.nvim_get_runtime_file("lsp/*.lua", true))
             :map(function(file)
                 return vim.fn.fnamemodify(file, ":t:r")
             end)

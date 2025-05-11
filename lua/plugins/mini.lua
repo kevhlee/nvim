@@ -20,10 +20,7 @@ return {
             {
                 "<Leader>hl",
                 function()
-                    vim.fn.setloclist(
-                        0,
-                        MiniDiff.export("qf", { scope = "current" })
-                    )
+                    vim.fn.setloclist(0, MiniDiff.export("qf", { scope = "current" }))
                     vim.cmd("lopen")
                 end,
                 desc = "(MiniDiff) Set quickfix list from all available hunks",
