@@ -27,7 +27,7 @@ return {
             },
         },
         enabled = function()
-            return vim.bo.filetype ~= "bigfile"
+            return not vim.tbl_contains({ "bigfile", "dap-repl" }, vim.bo.filetype)
         end,
         -- https://cmp.saghen.dev/configuration/fuzzy.html
         fuzzy = {
