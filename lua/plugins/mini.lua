@@ -1,11 +1,4 @@
 return {
-    -- Icons
-    {
-        "echasnovski/mini.icons",
-        event = "VimEnter",
-        opts = {},
-    },
-
     -- Hipatterns
     {
         "echasnovski/mini.hipatterns",
@@ -33,6 +26,13 @@ return {
                 },
             }
         end,
+    },
+
+    -- Icons
+    {
+        "echasnovski/mini.icons",
+        event = "VimEnter",
+        opts = {},
     },
 
     -- Indentscope

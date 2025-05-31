@@ -200,12 +200,6 @@ return {
             date_format = "%H:%M:%S",
             style = "fancy",
         },
-        styles = {
-            zen = {
-                width = 0.8,
-                height = 0.9,
-            },
-        },
         picker = {
             ui_select = true,
             win = {
@@ -229,6 +223,12 @@ return {
             },
             left = { "git", "mark" },
             right = { "sign", "fold" },
+        },
+        styles = {
+            zen = {
+                width = 0.8,
+                height = 0.9,
+            },
         },
         zen = {},
     },
