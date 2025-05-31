@@ -7,6 +7,7 @@ local autocmds = {
             end,
             desc = "Close buffer with 'q'",
             pattern = {
+                "fugitive",
                 "git",
                 "help",
                 "man",
