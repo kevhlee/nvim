@@ -21,7 +21,17 @@ return {
         {
             "<leader>l",
             function()
-                require("quicker").toggle({ focus = true, loclist = true })
+                require("quicker").toggle({
+                    focus = true,
+                    loclist = true,
+                    min_height = 10,
+                    max_height = 10,
+                    -- See `:h nvim_parse_cmd()` for more information on
+                    -- `open_cmd_mods`.
+                    open_cmd_mods = {
+                        split = "botright",
+                    },
+                })
             end,
             desc = "(Quicker) Toggle location list",
         },
