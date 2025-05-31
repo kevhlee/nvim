@@ -7,6 +7,26 @@ local keymaps = {
 
     -- Diagnostics
     { mode = "n", lhs = "gl", rhs = vim.diagnostic.open_float },
+    {
+        mode = "n",
+        lhs = "[e",
+        rhs = function()
+            vim.diagnostic.jump({
+                count = -1,
+                severity = vim.diagnostic.severity.ERROR,
+            })
+        end,
+    },
+    {
+        mode = "n",
+        lhs = "]e",
+        rhs = function()
+            vim.diagnostic.jump({
+                count = 1,
+                severity = vim.diagnostic.severity.ERROR,
+            })
+        end,
+    },
 
     -- Buffer
     { mode = "n", lhs = "<C-b>d", rhs = "<Cmd>bdelete<CR>" },
