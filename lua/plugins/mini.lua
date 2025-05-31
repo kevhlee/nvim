@@ -115,6 +115,10 @@ return {
         event = "VimEnter",
         opts = {
             format = function(buf_id, label)
+                if vim.fn.bufwinid(buf_id) == -1 then
+                    return ""
+                end
+
                 if vim.bo[buf_id].modified then
                     label = label .. " +"
                 end
