@@ -193,6 +193,21 @@ return {
     priority = 1000,
     opts = {
         bigfile = {
+            setup = function(ctx)
+                Snacks.util.wo(
+                    0,
+                    { foldmethod = "manual", statuscolumn = "", conceallevel = 0 }
+                )
+
+                vim.b.minihipatterns_disable = true
+                vim.b.miniindentscope_disable = true
+
+                vim.schedule(function()
+                    if vim.api.nvim_buf_is_valid(ctx.buf) then
+                        vim.bo[ctx.buf].syntax = ctx.ft
+                    end
+                end)
+            end,
             size = 1.5 * 1024 * 1024, -- 1.5 MB
         },
         input = {},
