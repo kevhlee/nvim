@@ -48,7 +48,7 @@ local keymaps = {
     { mode = "n", lhs = ">q", rhs = "<Cmd>cnewer<CR>" },
     {
         mode = "n",
-        lhs = "<leader>q",
+        lhs = "<Leader>q",
         rhs = function()
             local qflist = vim.fn.getqflist({ winid = 0, size = 0 })
             if qflist.winid == 0 then
@@ -69,7 +69,7 @@ local keymaps = {
     { mode = "n", lhs = ">l", rhs = "<Cmd>lnewer<CR>" },
     {
         mode = "n",
-        lhs = "<leader>l",
+        lhs = "<Leader>l",
         rhs = function()
             local loclist = vim.fn.getloclist(0, { winid = 0, size = 0 })
             if loclist.winid == 0 then

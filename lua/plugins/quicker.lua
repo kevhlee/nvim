@@ -3,7 +3,7 @@ return {
     event = "FileType qf",
     keys = {
         {
-            "<leader>q",
+            "<Leader>q",
             function()
                 require("quicker").toggle({
                     focus = true,
@@ -19,7 +19,7 @@ return {
             desc = "(Quicker) Toggle quickfix list",
         },
         {
-            "<leader>l",
+            "<Leader>l",
             function()
                 require("quicker").toggle({
                     focus = true,
