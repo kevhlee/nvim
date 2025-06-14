@@ -30,6 +30,14 @@ local cowboy_keymaps = {
     { key = "<Down>", mode = "n" },
     { key = "<Enter>", mode = "i" },
 }
+local cowboy_ignore_ft = {
+    "fugitive",
+    "git",
+    "help",
+    "man",
+    "oil",
+    "qf",
+}
 
 vim.keymap.set("n", "<Leader>tc", function()
     cowboy_mode = not cowboy_mode
@@ -58,6 +66,10 @@ for _, keymap in ipairs(cowboy_keymaps) do
     end
 
     vim.keymap.set(keymap.mode, keymap.key, function()
+        if vim.tbl_contains(cowboy_ignore_ft, vim.bo.ft) then
+            return keymap.key
+        end
+
         if not cowboy_mode or vim.v.count > 0 then
             reset()
         end
