@@ -38,8 +38,9 @@ return {
     },
     opts = {
         highlight = {
-            lsp = false,
             load_buffers = false,
+            lsp = false,
+            treesitter = false,
         },
         keys = {
             {
