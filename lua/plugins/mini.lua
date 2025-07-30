@@ -35,23 +35,6 @@ return {
         opts = {},
     },
 
-    -- Indentscope
-    {
-        "echasnovski/mini.indentscope",
-        event = { "BufNewFile", "BufReadPre" },
-        opts = {
-            mappings = {
-                -- Textobjects
-                object_scope = "ii",
-                object_scope_with_border = "ai",
-
-                -- Motions
-                goto_top = "[i",
-                goto_bottom = "]i",
-            },
-        },
-    },
-
     -- Surround
     {
         "echasnovski/mini.surround",

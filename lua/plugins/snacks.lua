@@ -210,6 +210,16 @@ return {
             end,
             size = 1.5 * 1024 * 1024, -- 1.5 MB
         },
+        indent = {
+            indent = {
+                char = "╎",
+                only_current = true,
+                only_scope = true,
+            },
+            scope = {
+                only_current = true,
+            },
+        },
         input = {},
         notifier = {
             date_format = "%H:%M:%S",
@@ -228,6 +238,7 @@ return {
                 },
             },
         },
+        scope = {},
         scratch = {
             win_by_ft = {},
         },
