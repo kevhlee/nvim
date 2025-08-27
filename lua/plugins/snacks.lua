@@ -170,18 +170,6 @@ return {
             desc = "(Snacks) List notifications",
         },
 
-        -- Scratch
-        {
-            "<Leader>.",
-            "<Cmd>lua Snacks.scratch()<CR>",
-            desc = "(Snacks) Toggle scratch buffer",
-        },
-        {
-            "<Leader>S",
-            "<Cmd>lua Snacks.scratch.select()<CR>",
-            desc = "(Snacks) Select scratch buffer",
-        },
-
         -- Zen
         {
             "<Leader>tz",
@@ -200,7 +188,6 @@ return {
                 )
 
                 vim.b.minihipatterns_disable = true
-                vim.b.miniindentscope_disable = true
 
                 vim.schedule(function()
                     if vim.api.nvim_buf_is_valid(ctx.buf) then
@@ -239,9 +226,6 @@ return {
             },
         },
         scope = {},
-        scratch = {
-            win_by_ft = {},
-        },
         statuscolumn = {
             folds = {
                 git_hl = true,
