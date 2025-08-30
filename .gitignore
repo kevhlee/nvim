@@ -41,7 +41,7 @@ luac.out
 
 # Configuration
 lsp/
-lua/override
+lua/plugins/override/
 lazy-lock.json
 
 # OS-specific
