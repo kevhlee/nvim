@@ -32,7 +32,7 @@ local spec = {
     { import = "plugins" },
 }
 
-local stat = vim.uv.fs_stat(vim.fn.stdpath("config") .. "/lua/override")
+local stat = vim.uv.fs_stat(vim.fn.stdpath("config") .. "/lua/override/plugins")
 
 if stat and stat.type == "directory" then
     table.insert(spec, { import = "override.plugins" })
